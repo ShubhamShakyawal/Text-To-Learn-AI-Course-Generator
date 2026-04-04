@@ -25,7 +25,7 @@ public class ModuleEntity {
     @ManyToOne(fetch = FetchType.LAZY) // defines many-to-one relationship between entities. many modules -> one course
     @JoinColumn(name = "course_id", nullable = false) // foreign key column relationship
     @JsonBackReference
-    private CourseEntity courseEntity;
+    private CourseEntity course;
 
     @OneToMany(mappedBy = "moduleEntity", cascade = CascadeType.ALL, orphanRemoval = true) // one-to-many relationship. one module -> many lessons
     @JsonManagedReference

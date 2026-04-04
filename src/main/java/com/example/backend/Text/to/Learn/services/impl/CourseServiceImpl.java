@@ -12,8 +12,10 @@ import com.example.backend.Text.to.Learn.repositories.ModuleRepository;
 import com.example.backend.Text.to.Learn.services.CourseService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,7 @@ public class CourseServiceImpl implements CourseService {
         if (course.getModules() != null) {
             for (ModuleEntity module : course.getModules()) {
 
-                module.setCourseEntity(course);
+                module.setCourse(course);
 
                 if (module.getLessons() != null) {
                     for (LessonEntity lesson : module.getLessons()) {
@@ -61,12 +63,16 @@ public class CourseServiceImpl implements CourseService {
 
     public CourseDTO getCourseById(Long id) {
         CourseEntity courseEntity = courseRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Course not found with id: " + id));
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Course not found with id: " + id
+                ));
+
         return modelMapper.map(courseEntity, CourseDTO.class);
     }
 
     public CourseDTO updateCourse(Long id, AddCourseRequestDTO addCourseRequestDTO) {
-        CourseEntity courseEntity = courseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Course not found with id: " + id));
+        CourseEntity courseEntity = courseRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found with id: " + id));
         courseEntity.setTitle(addCourseRequestDTO.getTitle());
         courseEntity.setDescription(addCourseRequestDTO.getDescription());
         return modelMapper.map(courseRepository.save(courseEntity), CourseDTO.class);
@@ -74,7 +80,7 @@ public class CourseServiceImpl implements CourseService {
 
     public void deleteCourseById(Long id) {
         if(!courseRepository.existsById(id)) {
-            throw new IllegalArgumentException("Course not found with id: " + id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found with id: " + id);
         }
         courseRepository.deleteById(id);
     }

@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "course_entity")
+@Table(name = "course")
 public class CourseEntity {
 
     @Id
@@ -27,7 +27,7 @@ public class CourseEntity {
     @Column(length = 2000)
     private String description;
 
-    @OneToMany(mappedBy = "courseEntity", cascade = CascadeType.ALL, orphanRemoval = true) // one-to-many relationship. one course -> many modules
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true) // one-to-many relationship. one course -> many modules
     @JsonManagedReference
     @Builder.Default
     private List<ModuleEntity> modules = new ArrayList<>();
@@ -37,6 +37,6 @@ public class CourseEntity {
             modules = new ArrayList<>();
         }
         modules.add(module);
-        module.setCourseEntity(this);
+        module.setCourse(this);
     }
 }
