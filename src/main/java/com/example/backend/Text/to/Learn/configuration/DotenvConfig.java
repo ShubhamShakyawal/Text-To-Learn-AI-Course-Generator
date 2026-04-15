@@ -1,16 +1,12 @@
-package com.texttolearn.config;
+package com.example.backend.Text.to.Learn.configuration;
 
-import io.github.cdimascio.dotenv.Dotenv;
-import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DotenvConfig {
 
-    @PostConstruct
-    public void loadEnv() {
-        Dotenv dotenv = Dotenv.configure()
-                .directory("./")
+    static {
+        io.github.cdimascio.dotenv.Dotenv dotenv = io.github.cdimascio.dotenv.Dotenv.configure()
                 .ignoreIfMissing()
                 .load();
 

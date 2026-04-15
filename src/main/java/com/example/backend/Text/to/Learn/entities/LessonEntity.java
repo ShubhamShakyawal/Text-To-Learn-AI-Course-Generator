@@ -25,4 +25,5 @@ public class LessonEntity {
     @JoinColumn(name = "module_id")
     @JsonBackReference
     private ModuleEntity moduleEntity;
+    private String YoutubeUrl;
 }

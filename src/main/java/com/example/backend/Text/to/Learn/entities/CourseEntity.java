@@ -2,10 +2,7 @@ package com.example.backend.Text.to.Learn.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +24,8 @@ public class CourseEntity {
     @Column(length = 2000)
     private String description;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true) // one-to-many relationship. one course -> many modules
+    @OneToMany(mappedBy = "courseEntity", cascade = CascadeType.ALL, orphanRemoval = true) // one-to-many relationship. one course -> many modules
     @JsonManagedReference
     @Builder.Default
     private List<ModuleEntity> modules = new ArrayList<>();
-
-    public void addModule(ModuleEntity module) {
-        if(modules == null ) {
-            modules = new ArrayList<>();
-        }
-        modules.add(module);
-        module.setCourse(this);
-    }
 }

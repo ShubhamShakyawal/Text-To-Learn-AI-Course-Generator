@@ -25,6 +25,11 @@ public class CourseController {
         return ResponseEntity.ok(courseService.saveCourse(addCourseRequestDTO));
     }
 
+    @PostMapping("/generate")
+    public ResponseEntity<CourseDTO> generateCourse(@RequestParam String topic) {
+        return ResponseEntity.ok(courseService.generateCourseFromAI(topic));
+    }
+
     @GetMapping
     public ResponseEntity<List<CourseDTO>> getCourses() {
         return ResponseEntity.ok(courseService.getAllCourses());
