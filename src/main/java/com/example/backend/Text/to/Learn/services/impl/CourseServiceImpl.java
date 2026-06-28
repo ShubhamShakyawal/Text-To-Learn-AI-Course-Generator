@@ -5,7 +5,9 @@ import com.example.backend.Text.to.Learn.dto.CourseDTO;
 import com.example.backend.Text.to.Learn.entities.CourseEntity;
 import com.example.backend.Text.to.Learn.entities.LessonEntity;
 import com.example.backend.Text.to.Learn.entities.ModuleEntity;
+import com.example.backend.Text.to.Learn.entities.UserEntity;
 import com.example.backend.Text.to.Learn.repositories.CourseRepository;
+import com.example.backend.Text.to.Learn.repositories.UserRepository;
 import com.example.backend.Text.to.Learn.services.AiService;
 import com.example.backend.Text.to.Learn.services.CourseService;
 import com.example.backend.Text.to.Learn.services.YoutubeService;
@@ -21,219 +23,186 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
-/**
- * Concrete implementation of {@link CourseService} providing CRUD operations
- * and AI-powered course generation for the Text-to-Learn application.
- *
- * <p>Responsibilities:
- * <ul>
- *   <li>Map DTOs ↔ entities using {@link ModelMapper}</li>
- *   <li>Persist and retrieve {@link CourseEntity} objects via {@link CourseRepository}</li>
- *   <li>Orchestrate the AI course generation pipeline:
- *       AI prompt → JSON → DTO → YouTube enrichment → persist</li>
- * </ul>
- *
- * <p>All database-mutating operations that span multiple steps are annotated
- * with {@code @Transactional} to ensure atomicity.
- */
 @Service
 @AllArgsConstructor
 public class CourseServiceImpl implements CourseService {
 
-    /** SLF4J logger for service-level diagnostics and tracing. */
     private static final Logger log = LoggerFactory.getLogger(CourseServiceImpl.class);
 
-    /** Repository for all course database operations. */
     private final CourseRepository courseRepository;
-
-    /** Service for generating course content via the OpenRouter AI API. */
+    private final UserRepository userRepository;
     private final AiService aiService;
-
-    /** Service for fetching YouTube video links for individual lessons. */
     private final YoutubeService youtubeService;
-
-    /** Jackson ObjectMapper used to deserialize the AI-generated JSON into a DTO. */
     private final ObjectMapper objectMapper;
-
-    /** ModelMapper instance used to convert between entity and DTO types. */
     private final ModelMapper modelMapper;
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Implementation details:
-     * <ol>
-     *   <li>Maps the incoming DTO to a {@link CourseEntity} graph</li>
-     *   <li>Fixes bidirectional parent references (module → course, lesson → module)
-     *       so JPA cascades correctly</li>
-     *   <li>Saves the full entity graph in a single {@code courseRepository.save()} call</li>
-     *   <li>Returns the saved entity mapped back to a {@link CourseDTO}</li>
-     * </ol>
-     */
+    // ── Authenticated user operations ─────────────────────────────────────
+
+    @Override @Transactional
+    public CourseDTO saveCourse(AddCourseRequestDTO dto, Long userId) {
+        UserEntity user = loadUser(userId);
+        CourseEntity course = buildCourse(dto);
+        course.setUser(user);
+        CourseEntity saved = courseRepository.save(course);
+        log.info("Course '{}' saved for user id: {}", saved.getTitle(), userId);
+        return modelMapper.map(saved, CourseDTO.class);
+    }
+
     @Override
-    @Transactional
-    public CourseDTO saveCourse(AddCourseRequestDTO dto) {
-        log.info("Saving course with title: '{}'", dto.getTitle());
+    public List<CourseDTO> getAllCoursesByUser(Long userId) {
+        return courseRepository.findByUserId(userId).stream()
+                .map(c -> modelMapper.map(c, CourseDTO.class)).toList();
+    }
 
-        // Map the incoming DTO to a JPA entity graph
+    @Override
+    public CourseDTO getCourseById(Long id, Long userId) {
+        return modelMapper.map(loadAndVerifyUser(id, userId), CourseDTO.class);
+    }
+
+    @Override
+    public CourseDTO updateCourse(Long id, AddCourseRequestDTO dto, Long userId) {
+        CourseEntity course = loadAndVerifyUser(id, userId);
+        course.setTitle(dto.getTitle());
+        course.setDescription(dto.getDescription());
+        return modelMapper.map(courseRepository.save(course), CourseDTO.class);
+    }
+
+    @Override
+    public void deleteCourseById(Long id, Long userId) {
+        loadAndVerifyUser(id, userId);
+        courseRepository.deleteById(id);
+        log.info("Course id: {} deleted by user id: {}", id, userId);
+    }
+
+    @Override
+    public CourseDTO generateCourseFromAI(String topic, Long userId) {
+        log.info("AI generation for topic='{}', user id={}", topic, userId);
+        AddCourseRequestDTO dto = runAIPipeline(topic);
+        return saveCourse(dto, userId);
+    }
+
+    // ── Guest session operations ───────────────────────────────────────────
+
+    @Override @Transactional
+    public CourseDTO saveCourseForGuest(AddCourseRequestDTO dto, String guestId) {
+        CourseEntity course = buildCourse(dto);
+        course.setGuestId(guestId);
+        CourseEntity saved = courseRepository.save(course);
+        log.info("Course '{}' saved for guest id: {}", saved.getTitle(), guestId);
+        return modelMapper.map(saved, CourseDTO.class);
+    }
+
+    @Override
+    public List<CourseDTO> getAllCoursesByGuest(String guestId) {
+        return courseRepository.findByGuestIdAndUserIsNull(guestId).stream()
+                .map(c -> modelMapper.map(c, CourseDTO.class)).toList();
+    }
+
+    @Override
+    public CourseDTO getCourseByIdForGuest(Long id, String guestId) {
+        return modelMapper.map(loadAndVerifyGuest(id, guestId), CourseDTO.class);
+    }
+
+    @Override
+    public CourseDTO updateCourseForGuest(Long id, AddCourseRequestDTO dto, String guestId) {
+        CourseEntity course = loadAndVerifyGuest(id, guestId);
+        course.setTitle(dto.getTitle());
+        course.setDescription(dto.getDescription());
+        return modelMapper.map(courseRepository.save(course), CourseDTO.class);
+    }
+
+    @Override
+    public void deleteCourseByIdForGuest(Long id, String guestId) {
+        loadAndVerifyGuest(id, guestId);
+        courseRepository.deleteById(id);
+        log.info("Course id: {} deleted by guest id: {}", id, guestId);
+    }
+
+    @Override
+    public CourseDTO generateCourseFromAIForGuest(String topic, String guestId) {
+        log.info("AI generation for topic='{}', guest id={}", topic, guestId);
+        AddCourseRequestDTO dto = runAIPipeline(topic);
+        return saveCourseForGuest(dto, guestId);
+    }
+
+    // ── Transfer ownership ─────────────────────────────────────────────────
+
+    @Override @Transactional
+    public int transferGuestCourses(String guestId, Long userId) {
+        List<CourseEntity> guestCourses = courseRepository.findByGuestIdAndUserIsNull(guestId);
+        if (guestCourses.isEmpty()) return 0;
+
+        UserEntity user = loadUser(userId);
+        for (CourseEntity c : guestCourses) {
+            c.setUser(user);
+            c.setGuestId(null); // clear guest ownership
+        }
+        courseRepository.saveAll(guestCourses);
+        log.info("Transferred {} course(s) from guest {} to user {}", guestCourses.size(), guestId, userId);
+        return guestCourses.size();
+    }
+
+    // ── Shared helpers ─────────────────────────────────────────────────────
+
+    /** Runs the AI + YouTube enrichment pipeline and returns a DTO (not yet saved). */
+    private AddCourseRequestDTO runAIPipeline(String topic) {
+        try {
+            String json = aiService.generateCourse(topic);
+            AddCourseRequestDTO dto = objectMapper.readValue(json, AddCourseRequestDTO.class);
+            dto.getModules().forEach(module -> {
+                if (module.getLessons() == null) return;
+                module.getLessons().forEach(lesson -> {
+                    String query = lesson.getYoutubeQuery(module.getTitle(), dto.getTitle());
+                    lesson.setYoutubeUrl(youtubeService.getVideoLink(query));
+                });
+            });
+            return dto;
+        } catch (Exception e) {
+            throw new RuntimeException("Course generation failed for topic: " + topic, e);
+        }
+    }
+
+    /** Maps a DTO to a CourseEntity, wiring bidirectional parent references. */
+    private CourseEntity buildCourse(AddCourseRequestDTO dto) {
         CourseEntity course = modelMapper.map(dto, CourseEntity.class);
-
-        // Step 1: Fix bidirectional relationships before saving
-        // JPA requires the "owning" side of each relationship to hold the FK reference.
-        // ModelMapper does not set these back-references automatically.
         if (course.getModules() != null) {
             for (ModuleEntity module : course.getModules()) {
-
-                module.setCourseEntity(course); // set module → course (FK: module.course_id)
-
+                module.setCourseEntity(course);
                 if (module.getLessons() != null) {
                     for (LessonEntity lesson : module.getLessons()) {
-                        lesson.setModuleEntity(module); // set lesson → module (FK: lesson.module_id)
+                        lesson.setModuleEntity(module);
                     }
                 }
             }
         }
-
-        // Step 2: Persist the course and its entire entity graph via cascade
-        CourseEntity savedCourse = courseRepository.save(course);
-        log.info("Course '{}' saved successfully with id: {}", savedCourse.getTitle(), savedCourse.getId());
-
-        // Map the persisted entity back to a DTO and return it to the caller
-        return modelMapper.map(savedCourse, CourseDTO.class);
+        return course;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<CourseDTO> getAllCourses() {
-        List<CourseEntity> courseEntities = courseRepository.findAll();
-        log.info("Retrieved {} course(s) from the database", courseEntities.size());
-
-        // Stream over entities, map each to a DTO, and collect into a list
-        return courseEntities.stream()
-                .map(courseEntity -> modelMapper.map(courseEntity, CourseDTO.class))
-                .toList();
+    private UserEntity loadUser(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "User not found: " + userId));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public CourseDTO getCourseById(Long id) {
-        log.info("Fetching course with id: {}", id);
-
-        CourseEntity courseEntity = courseRepository.findById(id)
-                .orElseThrow(() -> {
-                    log.warn("Course not found with id: {}", id);
-                    return new ResponseStatusException(
-                            HttpStatus.NOT_FOUND,
-                            "Course not found with id: " + id
-                    );
-                });
-
-        log.info("Course '{}' found for id: {}", courseEntity.getTitle(), id);
-        return modelMapper.map(courseEntity, CourseDTO.class);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Only the {@code title} and {@code description} fields are updated.
-     * Nested modules and lessons are not modified by this operation.
-     */
-    @Override
-    public CourseDTO updateCourse(Long id, AddCourseRequestDTO addCourseRequestDTO) {
-        log.info("Updating course with id: {}", id);
-
-        CourseEntity courseEntity = courseRepository.findById(id)
-                .orElseThrow(() -> {
-                    log.warn("Course not found with id: {} during update", id);
-                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found with id: " + id);
-                });
-
-        // Apply the field updates (modules are left unchanged in this operation)
-        courseEntity.setTitle(addCourseRequestDTO.getTitle());
-        courseEntity.setDescription(addCourseRequestDTO.getDescription());
-
-        CourseEntity updatedCourse = courseRepository.save(courseEntity);
-        log.info("Course id: {} updated successfully. New title: '{}'", id, updatedCourse.getTitle());
-
-        return modelMapper.map(updatedCourse, CourseDTO.class);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void deleteCourseById(Long id) {
-        log.info("Attempting to delete course with id: {}", id);
-
-        // Verify the course exists before attempting deletion
-        if (!courseRepository.existsById(id)) {
-            log.warn("Cannot delete — course not found with id: {}", id);
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found with id: " + id);
+    private CourseEntity loadAndVerifyUser(Long courseId, Long userId) {
+        CourseEntity course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Course not found: " + courseId));
+        if (course.getUser() == null || !course.getUser().getId().equals(userId)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,
+                    "You do not have access to this course");
         }
-
-        courseRepository.deleteById(id);
-        log.info("Course with id: {} deleted successfully", id);
+        return course;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Pipeline:
-     * <ol>
-     *   <li>Send topic to {@link AiService} — receive raw JSON string</li>
-     *   <li>Deserialize JSON → {@link AddCourseRequestDTO} using Jackson {@link ObjectMapper}</li>
-     *   <li>For each lesson, resolve a YouTube video URL via {@link YoutubeService}</li>
-     *   <li>Delegate to {@link #saveCourse(AddCourseRequestDTO)} to persist the enriched course</li>
-     * </ol>
-     *
-     * @throws RuntimeException wrapping any parsing or persistence errors
-     */
-    @Override
-    public CourseDTO generateCourseFromAI(String topic) {
-        log.info("Starting AI course generation pipeline for topic: '{}'", topic);
-        try {
-            // Step 1: Call AI service to get raw JSON course content
-            String json = aiService.generateCourse(topic);
-            log.info("AI service returned JSON response for topic: '{}'. Length: {} chars",
-                    topic, json != null ? json.length() : 0);
-
-            // Step 2: Deserialize the raw JSON string → AddCourseRequestDTO
-            AddCourseRequestDTO dto = objectMapper.readValue(json, AddCourseRequestDTO.class);
-            log.info("Deserialized AI response into DTO: title='{}', modules={}",
-                    dto.getTitle(), dto.getModules() != null ? dto.getModules().size() : 0);
-
-            // Step 3: Enrich each lesson with a YouTube video URL
-            dto.getModules().forEach(module -> {
-                if (module.getLessons() == null) return; // skip modules with no lessons
-
-                module.getLessons().forEach(lesson -> {
-                    // Build or use existing YouTube search query for this lesson
-                    String query = lesson.getYoutubeQuery(
-                            module.getTitle(),
-                            dto.getTitle()
-                    );
-                    log.debug("Fetching YouTube link for lesson '{}' using query: '{}'",
-                            lesson.getTitle(), query);
-
-                    // Fetch the top YouTube video URL for the query
-                    String link = youtubeService.getVideoLink(query);
-                    lesson.setYoutubeUrl(link); // attach the resolved URL to the lesson
-                    log.debug("YouTube URL for lesson '{}': {}", lesson.getTitle(), link);
-                });
-            });
-
-            log.info("YouTube enrichment complete. Persisting generated course...");
-
-            // Step 4: Save the fully enriched course to the database
-            return saveCourse(dto);
-
-        } catch (Exception e) {
-            log.error("Failed to generate course from AI for topic: '{}'. Error: {}", topic, e.getMessage(), e);
-            throw new RuntimeException("Course generation failed for topic: " + topic, e);
+    private CourseEntity loadAndVerifyGuest(Long courseId, String guestId) {
+        CourseEntity course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Course not found: " + courseId));
+        if (!guestId.equals(course.getGuestId())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,
+                    "You do not have access to this course");
         }
+        return course;
     }
 }

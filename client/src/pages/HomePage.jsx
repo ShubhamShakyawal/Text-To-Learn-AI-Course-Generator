@@ -4,6 +4,7 @@ import { useCourse } from '../context/CourseContext';
 import { useAuth } from '../hooks/useAuth';
 import PromptForm from '../components/PromptForm';
 import LoadingSpinner from '../components/LoadingSpinner';
+import CourseGenerationLoader from '../components/CourseGenerationLoader';
 import ErrorMessage from '../components/ErrorMessage';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
@@ -211,7 +212,7 @@ const HomePage = () => {
         )}
       </main>
 
-      {isGenerating && <LoadingSpinner />}
+      {isGenerating && <CourseGenerationLoader />}
       <Footer />
     </div>
   );

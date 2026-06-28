@@ -16,53 +16,62 @@ import {
   Loader2
 } from 'lucide-react';
 
+const getEmbedUrl = (url) => {
+  if (!url) return '';
+  if (url.includes('youtube.com/embed/')) return url;
+  
+  // Handle youtube.com/watch?v=ID
+  const watchMatch = url.match(/[?&]v=([^&#]+)/);
+  if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  
+  // Handle youtu.be/ID
+  const shortMatch = url.match(/youtu\.be\/([^?&#]+)/);
+  if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+  
+  return url;
+};
+
 const LessonPage = () => {
   const { courseId, moduleIndex, lessonIndex } = useParams();
   const navigate = useNavigate();
-  const { activeCourse, fetchCourse, activeLesson, setActiveLesson, updateProgress, isGenerating, error } = useCourse();
+  const { activeCourse, fetchCourse, setActiveLesson, activeLesson, updateProgress, isGenerating, error } = useCourse();
   const pdfRef = useRef();
   const [audioLoading, setAudioLoading] = useState(false);
   const [audioUrl, setAudioUrl] = useState(null);
   const audioRef = useRef(new Audio());
 
-  const mIdx = parseInt(moduleIndex);
-  const lIdx = parseInt(lessonIndex);
+  const mIdx = parseInt(moduleIndex, 10);
+  const lIdx = parseInt(lessonIndex, 10);
 
+  // Load the course if it isn't already in context (or if it's a different course).
+  // FIX: compare as strings to avoid Number vs String type mismatch from URL params.
   useEffect(() => {
-    const loadData = async () => {
-      if (!activeCourse || activeCourse.id !== courseId) {
+    const load = async () => {
+      if (!activeCourse || String(activeCourse.id) !== String(courseId)) {
         await fetchCourse(courseId);
       }
     };
-    loadData();
+    load();
   }, [courseId]);
 
+  // Derive the active lesson directly from the course data already in context.
+  // FIX: do NOT call api.getLesson() — lessons are already embedded in the course
+  // response from /api/courses/{id}. Calling /api/lessons/{id} separately
+  // hits a protected endpoint and fails for guests.
   useEffect(() => {
-    if (activeCourse) {
+    if (activeCourse && String(activeCourse.id) === String(courseId)) {
       const lesson = activeCourse.modules?.[mIdx]?.lessons?.[lIdx];
       if (lesson) {
-        // In a real app, we might fetch full lesson content here if it's not pre-loaded
-        // For this spec, we'll assume the lesson object in the course has the content array or we fetch it
-        const fetchFullLesson = async () => {
-          try {
-            const data = await api.getLesson(lesson.id);
-            setActiveLesson(data);
-          } catch (err) {
-            console.error('Failed to fetch lesson content:', err);
-            // Fallback if the activeCourse already has content
-            setActiveLesson(lesson);
-          }
-        };
-        fetchFullLesson();
+        setActiveLesson(lesson);
       }
     }
-    
-    // Cleanup audio on lesson change
+
+    // Pause any playing audio when navigating between lessons
     return () => {
       audioRef.current.pause();
       setAudioUrl(null);
     };
-  }, [activeCourse, mIdx, lIdx]);
+  }, [activeCourse, courseId, mIdx, lIdx]);
 
   const handleHinglishAudio = async () => {
     if (audioUrl) {
@@ -73,7 +82,6 @@ const LessonPage = () => {
     setAudioLoading(true);
     try {
       const data = await api.getHinglishAudio(activeLesson.id);
-      // Assuming data.audioUrl or similar
       const url = data.audioUrl || data;
       setAudioUrl(url);
       audioRef.current.src = url;
@@ -86,12 +94,14 @@ const LessonPage = () => {
   };
 
   const goToNext = async () => {
-    // Mark current lesson as completed
-    await updateProgress(courseId, activeLesson.id, true);
+    if (activeLesson) {
+      await updateProgress(courseId, activeLesson.id, true);
+    }
+
+    const currentModule = activeCourse?.modules?.[mIdx];
+    if (!currentModule) return;
 
     const nextLIdx = lIdx + 1;
-    const currentModule = activeCourse.modules[mIdx];
-    
     if (nextLIdx < currentModule.lessons.length) {
       navigate(`/course/${courseId}/module/${mIdx}/lesson/${nextLIdx}`);
     } else {
@@ -111,15 +121,22 @@ const LessonPage = () => {
     } else {
       const prevMIdx = mIdx - 1;
       if (prevMIdx >= 0) {
-        const prevModule = activeCourse.modules[prevMIdx];
-        navigate(`/course/${courseId}/module/${prevMIdx}/lesson/${prevModule.lessons.length - 1}`);
+        const prevModule = activeCourse?.modules?.[prevMIdx];
+        if (prevModule) {
+          navigate(`/course/${courseId}/module/${prevMIdx}/lesson/${prevModule.lessons.length - 1}`);
+        }
       }
     }
   };
 
-  if (isGenerating && !activeLesson) return <LoadingSpinner />;
+  // Show loading only when course is still being fetched and we have nothing yet
+  if (isGenerating && !activeCourse) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error} />;
-  if (!activeLesson) return <div className="p-10 text-center">Lesson not found.</div>;
+  if (!activeLesson) return (
+    <div className="p-10 text-center text-slate-400">
+      {activeCourse ? 'Lesson not found in this course.' : 'Loading lesson…'}
+    </div>
+  );
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 pb-32">
@@ -182,10 +199,34 @@ const LessonPage = () => {
               </ul>
             </div>
           )}
+
+          {/* YouTube Video (if lesson has one) */}
+          {activeLesson.youtubeUrl && (
+            <div className="mb-10 rounded-3xl overflow-hidden border border-slate-800 shadow-xl">
+              <div className="aspect-video">
+                <iframe
+                  src={getEmbedUrl(activeLesson.youtubeUrl)}
+                  title={activeLesson.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          )}
         </header>
 
+        {/* Lesson body — renders structured content blocks or plain text */}
         <div className="lesson-body">
-          <LessonRenderer content={activeLesson.content || []} />
+          {Array.isArray(activeLesson.content) && activeLesson.content.length > 0 ? (
+            <LessonRenderer content={activeLesson.content} />
+          ) : (
+            <div className="prose prose-invert max-w-none">
+              <p className="text-slate-300 text-lg leading-relaxed whitespace-pre-wrap">
+                {activeLesson.content || activeLesson.description || 'No content available for this lesson.'}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Footer Navigation */}

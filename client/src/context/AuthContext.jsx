@@ -1,34 +1,39 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setAuthToken, syncUser } from '../utils/api';
+import { getMe, logout as apiLogout } from '../utils/api';
 import AuthModal from '../components/AuthModal';
 
 export const AuthContext = createContext();
 
+/**
+ * Provides authentication state to the entire application.
+ *
+ * Session handling:
+ * - On mount, calls GET /api/auth/me to validate the session cookie with the server.
+ *   If the server returns a user, the session is active. No localStorage is used.
+ * - On login/register, the AuthModal calls the API and passes the UserDTO back via onLoginSuccess.
+ * - On logout, calls POST /api/auth/logout to invalidate the server session.
+ */
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null); // 'google' or 'email'
-  
+
   const navigate = useNavigate();
 
-  // Load user from localStorage on mount
+  // On mount — ask the server if we have a valid session
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        const storedUser = localStorage.getItem('texttolearn_user');
-        if (storedUser) {
-          const parsedUser = JSON.parse(storedUser);
-          setUser(parsedUser);
+        const serverUser = await getMe(); // returns UserDTO or null
+        if (serverUser) {
+          setUser(serverUser);
           setIsAuthenticated(true);
-          // Set authorization token if we have a mock token
-          setAuthToken(parsedUser.token || 'mock-jwt-token');
         }
       } catch (err) {
-        console.error('Failed to load user session:', err);
-        localStorage.removeItem('texttolearn_user');
+        console.error('Session validation failed:', err);
       } finally {
         setIsLoading(false);
       }
@@ -52,37 +57,33 @@ export const AuthProvider = ({ children }) => {
     setModalType(null);
   };
 
-  const loginUser = async (userData) => {
-    const mockToken = 'mock-jwt-token-' + Math.random().toString(36).substr(2, 9);
-    const completeUser = {
-      ...userData,
-      token: mockToken,
-    };
-
-    setUser(completeUser);
+  /**
+   * Called by AuthModal after a successful register/login/google API call.
+   * Stores the returned UserDTO in React state only — no localStorage.
+   * Fires 'auth:login' so CourseContext refreshes and picks up transferred guest courses.
+   *
+   * @param {UserDTO} userData - the user object returned by the backend
+   */
+  const loginUser = (userData) => {
+    setUser(userData);
     setIsAuthenticated(true);
-    localStorage.setItem('texttolearn_user', JSON.stringify(completeUser));
-    setAuthToken(mockToken);
     closeModal();
-
-    // Trigger syncUser to backend in background (gracefully caught if backend endpoint doesn't exist)
-    try {
-      await syncUser({
-        name: completeUser.name,
-        email: completeUser.email,
-        picture: completeUser.picture,
-        sub: completeUser.sub || `local|${completeUser.email}`,
-      });
-    } catch (err) {
-      console.warn('Backend sync failed, running in local-only mode:', err);
-    }
+    // Signal CourseContext to re-fetch (picks up transferred guest courses)
+    window.dispatchEvent(new Event('auth:login'));
   };
 
-  const logout = () => {
+  /**
+   * Logs out by invalidating the server session, then clears React state.
+   */
+  const logout = async () => {
+    try {
+      await apiLogout();
+    } catch (err) {
+      // Even if the server call fails, clear local state
+      console.warn('Logout API call failed:', err);
+    }
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem('texttolearn_user');
-    setAuthToken(null);
     closeModal();
     navigate('/');
   };
@@ -100,7 +101,7 @@ export const AuthProvider = ({ children }) => {
       }}
     >
       {children}
-      
+
       {/* Global Authentication Modal Overlay */}
       {isModalOpen && (
         <AuthModal

@@ -11,7 +11,10 @@ const CoursePage = () => {
   const { activeCourse, fetchCourse, isGenerating, error } = useCourse();
 
   useEffect(() => {
-    fetchCourse(courseId);
+    // Always fetch when courseId changes; fetchCourse updates activeCourse in context
+    if (!activeCourse || String(activeCourse.id) !== String(courseId)) {
+      fetchCourse(courseId);
+    }
   }, [courseId]);
 
   if (isGenerating && !activeCourse) return <LoadingSpinner />;

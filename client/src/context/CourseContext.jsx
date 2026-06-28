@@ -12,14 +12,29 @@ export const CourseProvider = ({ children }) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState(null);
 
+  /**
+   * Fetches the current user's (or guest's) courses from the backend.
+   * Works for both authenticated users (uses JSESSIONID) and guests (uses GUEST_SESSION_ID).
+   */
   const fetchUserCourses = async () => {
     try {
       const data = await api.getUserCourses();
       setCourses(data);
     } catch (err) {
-      console.error('Failed to fetch user courses:', err);
+      console.error('Failed to fetch courses:', err);
     }
   };
+
+  // Load courses on mount — works for both guests and authenticated users.
+  // Also listens for 'auth:login' so courses are refreshed (including transferred
+  // guest courses) immediately after the user logs in or registers.
+  useEffect(() => {
+    fetchUserCourses();
+
+    const onAuthLogin = () => fetchUserCourses();
+    window.addEventListener('auth:login', onAuthLogin);
+    return () => window.removeEventListener('auth:login', onAuthLogin);
+  }, []);
 
   const generateCourse = async (prompt) => {
     setIsGenerating(true);
@@ -38,12 +53,11 @@ export const CourseProvider = ({ children }) => {
 
   const updateProgress = async (courseId, lessonId, completed) => {
     try {
-      // Optimistic update for courses list
       setCourses(prev => prev.map(course => {
         if (course.id === courseId) {
           return {
             ...course,
-            completedLessons: completed 
+            completedLessons: completed
               ? [...(course.completedLessons || []), lessonId]
               : (course.completedLessons || []).filter(id => id !== lessonId)
           };
@@ -51,12 +65,11 @@ export const CourseProvider = ({ children }) => {
         return course;
       }));
 
-      // Update activeCourse if it's the one being modified
       setActiveCourse(prev => {
         if (prev && prev.id === courseId) {
           return {
             ...prev,
-            completedLessons: completed 
+            completedLessons: completed
               ? [...(prev.completedLessons || []), lessonId]
               : (prev.completedLessons || []).filter(id => id !== lessonId)
           };
@@ -64,10 +77,7 @@ export const CourseProvider = ({ children }) => {
         return prev;
       });
 
-      // Backend update if token exists
-      if (api.defaults.headers.common['Authorization']) {
-        await api.updateLessonProgress(courseId, lessonId, completed);
-      }
+      await api.updateLessonProgress(courseId, lessonId, completed);
     } catch (err) {
       console.error('Failed to update progress:', err);
     }
@@ -117,7 +127,7 @@ export const CourseProvider = ({ children }) => {
         fetchUserCourses,
         updateProgress,
         setActiveCourse,
-        setActiveLesson
+        setActiveLesson,
       }}
     >
       {children}

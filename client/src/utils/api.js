@@ -2,21 +2,72 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
+/**
+ * Axios instance with session cookie support.
+ * `withCredentials: true` ensures the browser sends the JSESSIONID cookie
+ * on every request so the server can validate the session.
+ */
 const api = axios.create({
   baseURL: API_URL,
+  withCredentials: true, // send session cookie with every request
 });
 
-export const setAuthToken = (token) => {
-  if (token) {
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  } else {
-    delete api.defaults.headers.common['Authorization'];
+// ── Auth API ──────────────────────────────────────────────────────────────────
+
+/**
+ * Registers a new user account and automatically logs them in.
+ * @returns {Promise<UserDTO>} the created user
+ */
+export const register = async (name, email, password) => {
+  const response = await api.post('/auth/register', { name, email, password });
+  return response.data;
+};
+
+/**
+ * Authenticates with email and password.
+ * @returns {Promise<UserDTO>} the authenticated user
+ */
+export const login = async (email, password) => {
+  const response = await api.post('/auth/login', { email, password });
+  return response.data;
+};
+
+/**
+ * Authenticates (or registers) via a Google ID token credential.
+ * @param {string} credential - the raw Google ID token from the sign-in button
+ * @returns {Promise<UserDTO>} the authenticated user
+ */
+export const loginWithGoogle = async (credential) => {
+  const response = await api.post('/auth/google', { credential });
+  return response.data;
+};
+
+/**
+ * Invalidates the current server session.
+ */
+export const logout = async () => {
+  await api.post('/auth/logout');
+};
+
+/**
+ * Validates the active session with the server and returns the current user.
+ * Returns null if the session is invalid or expired (401).
+ * @returns {Promise<UserDTO|null>}
+ */
+export const getMe = async () => {
+  try {
+    const response = await api.get('/auth/me');
+    return response.data;
+  } catch {
+    return null;
   }
 };
 
+// ── Course API ────────────────────────────────────────────────────────────────
+
 export const generateCourse = async (prompt) => {
   try {
-    // Align with Spring Boot controller endpoint: POST /api/courses/generate?topic=...
+    // POST /api/courses/generate?topic=...
     const response = await api.post('/courses/generate', null, {
       params: { topic: prompt }
     });
@@ -24,13 +75,12 @@ export const generateCourse = async (prompt) => {
   } catch (error) {
     console.warn("Backend course generation failed. Falling back to dynamic sample course:", error.message);
 
-    const capitalizedTopic = prompt 
-      ? prompt.charAt(0).toUpperCase() + prompt.slice(1) 
+    const capitalizedTopic = prompt
+      ? prompt.charAt(0).toUpperCase() + prompt.slice(1)
       : "React & Modern Web Dev";
-      
-    // Return a beautifully structured sample course custom-tailored to the user's prompt topic
+
     return {
-      id: Date.now(), // Dynamic unique ID so frontend saves/lists it correctly
+      id: Date.now(),
       title: `${capitalizedTopic} (Sample Course)`,
       description: `A beautifully structured learning journey designed to master the fundamentals and advanced architectural patterns of ${capitalizedTopic}.`,
       modules: [
@@ -79,17 +129,6 @@ export const generateCourse = async (prompt) => {
   }
 };
 
-
-export const syncUser = async (userData) => {
-  try {
-    const response = await api.post('/user/sync', userData);
-    return response.data;
-  } catch (error) {
-    console.warn('Backend user sync failed, running in local-only fallback mode:', error.message);
-    return { success: true, user: userData, local: true };
-  }
-};
-
 export const getCourse = async (id) => {
   const response = await api.get(`/courses/${id}`);
   return response.data;
@@ -97,18 +136,11 @@ export const getCourse = async (id) => {
 
 export const getUserCourses = async () => {
   try {
-    const response = await api.get('/user-courses');
+    const response = await api.get('/courses');
     return response.data;
   } catch (error) {
-    // If backend doesn't have custom /user-courses, fetch all courses from general /courses endpoint
-    console.warn('Backend /user-courses failed, falling back to /courses:', error.message);
-    try {
-      const response = await api.get('/courses');
-      return response.data;
-    } catch (fallbackError) {
-      console.error('All course fetch attempts failed:', fallbackError);
-      return [];
-    }
+    console.error('Failed to fetch user courses:', error.message);
+    return [];
   }
 };
 
@@ -128,12 +160,12 @@ export const updateLessonProgress = async (courseId, lessonId, completed) => {
 };
 
 export const getYouTubeVideo = async (query) => {
-  const response = await api.get(`/youtube`, { params: { query } });
+  const response = await api.get('/youtube', { params: { query } });
   return response.data;
 };
 
 export const getHinglishAudio = async (lessonId) => {
-  const response = await api.post(`/hinglish`, null, { params: { lessonId } });
+  const response = await api.post('/hinglish', null, { params: { lessonId } });
   return response.data;
 };
 

@@ -38,7 +38,7 @@ public class AiService {
     private final WebClient openRouterClient;
 
     /** API key used in the Authorization header for OpenRouter requests. */
-    @Value("${spring.ai.openai.api-key}")
+    @Value("${spring.ai.api-key}")
     private String apiKey;
 
     /** The AI model name to use for chat completions (e.g., "openai/gpt-4o-mini"). */
@@ -96,36 +96,64 @@ public class AiService {
         """.formatted(topic);
 
         // Assemble the OpenRouter-compatible request body (matches OpenAI chat completions spec)
-        Map<String, Object> request = Map.of(
-                "model", modelName,
-                "messages", new Object[]{
-                        Map.of("role", "user", "content", prompt)
-                }
-        );
+        Map<String, Object> request = getRequestObject(prompt);
 
         log.debug("Sending POST request to /chat/completions with topic: '{}'", topic);
 
         // Execute the HTTP request and extract the generated content string from the response
-        String result = openRouterClient.post()
-                .uri("/chat/completions")
-                .header("Authorization", "Bearer " + apiKey)   // API key authentication
-                .header("HTTP-Referer", "http://localhost:8080") // recommended by OpenRouter for tracking
-                .header("X-Title", "Course Generator")           // app identifier shown in OpenRouter dashboard
-                .header("Content-Type", "application/json")
-                .bodyValue(request)
-                .retrieve()
-                .bodyToMono(Map.class)
-                .map(res -> {
-                    // Navigate the response structure: choices[0].message.content
-                    var choices = (List<Map<String, Object>>) res.get("choices");
-                    var message = (Map<String, Object>) choices.get(0).get("message");
-                    return (String) message.get("content");
-                })
-                .block(); // block the reactive call — acceptable in this synchronous service context
+        String result = createExecutePostRequestToClient(request);
 
         log.info("AI course generation complete for topic: '{}'. Response length: {} chars",
                 topic, result != null ? result.length() : 0);
 
         return result;
+    }
+
+    public String get() {
+        log.info("Requesting AI  for Connection Status: ");
+        log.debug("Using model: '{}' via OpenRouter API", modelName);
+
+        log.debug("Sending GET request to /chat/completions for Connection Check ");
+
+        return openRouterClient.get()
+                .uri("/chat/completions")
+                .header("Authorization", "Bearer " + apiKey)   // API key authentication
+                .header("HTTP-Referer", "http://localhost:8080") // recommended by OpenRouter for tracking
+                .header("X-Title", "Course Generator")           // app identifier shown in OpenRouter dashboard
+                .header("Content-Type", "application/json")
+                .retrieve()
+                .toString();
+    }
+
+    private Map<String, Object> getRequestObject(String prompt) {
+        return Map.of(
+                "model", modelName,
+                "messages", new Object[]{
+                        Map.of("role", "user", "content", prompt)
+                }
+        );
+    }
+
+    private String createExecutePostRequestToClient(Map<String, Object> request) {
+        try {
+            return openRouterClient.post()
+                    .uri("/chat/completions")
+                    .header("Authorization", "Bearer " + apiKey)   // API key authentication
+                    .header("HTTP-Referer", "http://localhost:8080") // recommended by OpenRouter for tracking
+                    .header("X-Title", "Course Generator")           // app identifier shown in OpenRouter dashboard
+                    .header("Content-Type", "application/json")
+                    .bodyValue(request)
+                    .retrieve()
+                    .bodyToMono(Map.class)
+                    .map(res -> {
+                        // Navigate the response structure: choices[0].message.content
+                        var choices = (List<Map<String, Object>>) res.get("choices");
+                        var message = (Map<String, Object>) choices.get(0).get("message");
+                        return (String) message.get("content");
+                    })
+                    .block(); // block the reactive call — acceptable in this synchronous service context
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

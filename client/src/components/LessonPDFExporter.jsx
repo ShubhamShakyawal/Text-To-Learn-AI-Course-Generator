@@ -59,21 +59,25 @@ const LessonPDFExporter = forwardRef(({ lesson, content }, ref) => {
           {lesson.title}
         </h1>
         <div style={{ fontSize: '16px', lineHeight: '1.6' }}>
-          {content.map((block, idx) => {
-            if (block.type === 'heading') return <h2 key={idx} style={{ fontSize: '24px', marginTop: '30px', color: '#1e40af' }}>{block.text}</h2>;
-            if (block.type === 'paragraph') return <p key={idx} style={{ marginBottom: '15px' }}>{block.text}</p>;
-            if (block.type === 'code') return <pre key={idx} style={{ padding: '15px', backgroundColor: '#f1f5f9', borderRadius: '8px', overflowX: 'auto', fontSize: '14px' }}>{block.text}</pre>;
-            if (block.type === 'mcq') return (
-              <div key={idx} style={{ padding: '20px', border: '1px solid #e2e8f0', borderRadius: '12px', margin: '20px 0' }}>
-                <p style={{ fontWeight: 'bold' }}>Question: {block.question}</p>
-                <ul style={{ listStyleType: 'circle', paddingLeft: '20px' }}>
-                  {block.options.map((opt, i) => <li key={i}>{opt}</li>)}
-                </ul>
-                <p style={{ color: '#16a34a', marginTop: '10px' }}>Correct Answer Index: {block.answer}</p>
-              </div>
-            );
-            return null;
-          })}
+          {Array.isArray(content) ? (
+            content.map((block, idx) => {
+              if (block.type === 'heading') return <h2 key={idx} style={{ fontSize: '24px', marginTop: '30px', color: '#1e40af' }}>{block.text}</h2>;
+              if (block.type === 'paragraph') return <p key={idx} style={{ marginBottom: '15px' }}>{block.text}</p>;
+              if (block.type === 'code') return <pre key={idx} style={{ padding: '15px', backgroundColor: '#f1f5f9', borderRadius: '8px', overflowX: 'auto', fontSize: '14px' }}>{block.text}</pre>;
+              if (block.type === 'mcq') return (
+                <div key={idx} style={{ padding: '20px', border: '1px solid #e2e8f0', borderRadius: '12px', margin: '20px 0' }}>
+                  <p style={{ fontWeight: 'bold' }}>Question: {block.question}</p>
+                  <ul style={{ listStyleType: 'circle', paddingLeft: '20px' }}>
+                    {block.options.map((opt, i) => <li key={i}>{opt}</li>)}
+                  </ul>
+                  <p style={{ color: '#16a34a', marginTop: '10px' }}>Correct Answer Index: {block.answer}</p>
+                </div>
+              );
+              return null;
+            })
+          ) : (
+            <p style={{ whiteSpace: 'pre-wrap' }}>{String(content)}</p>
+          )}
         </div>
       </div>
     </>

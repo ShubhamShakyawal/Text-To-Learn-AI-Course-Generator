@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { GoogleLogin } from '@react-oauth/google';
-import { 
-  X, Mail, Lock, User, Eye, EyeOff, 
-  AlertCircle, Sparkles, GraduationCap 
+import {
+  X, Mail, Lock, User, Eye, EyeOff,
+  AlertCircle, Sparkles, GraduationCap
 } from 'lucide-react';
+import { register as apiRegister, login as apiLogin, loginWithGoogle as apiLoginWithGoogle } from '../utils/api';
 
+/**
+ * Authentication modal supporting:
+ * - Google sign-in (via Google ID token → POST /api/auth/google)
+ * - Email sign-in (POST /api/auth/login)
+ * - Email registration (POST /api/auth/register)
+ *
+ * On success, calls `onLoginSuccess(UserDTO)` which is handled by AuthContext.
+ */
 const AuthModal = ({ type, onClose, onLoginSuccess }) => {
   const [activeTab, setActiveTab] = useState(type === 'google' ? 'google' : 'login');
-  
-  // Email/Password Form States
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -19,66 +27,45 @@ const AuthModal = ({ type, onClose, onLoginSuccess }) => {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Get local user database
-  const getLocalDB = () => {
-    try {
-      const db = localStorage.getItem('texttolearn_users_db');
-      return db ? JSON.parse(db) : [];
-    } catch {
-      return [];
-    }
+  /**
+   * Extracts a user-friendly error message from an Axios error response.
+   */
+  const extractErrorMessage = (err) => {
+    if (err?.response?.data?.message) return err.response.data.message;
+    if (err?.response?.data?.error) return err.response.data.error;
+    if (err?.message) return err.message;
+    return 'Something went wrong. Please try again.';
   };
 
-  // Save to local user database
-  const saveToLocalDB = (users) => {
-    localStorage.setItem('texttolearn_users_db', JSON.stringify(users));
-  };
+  // ── Sign Up ──────────────────────────────────────────────────────────────
 
-  // Handle local signup
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
 
     if (!name.trim()) return setError('Please enter your full name');
     if (!email.trim() || !email.includes('@')) return setError('Please enter a valid email address');
-    if (password.length < 6) return setError('Password must be at least 6 characters long');
+    if (password.length < 6) return setError('Password must be at least 6 characters');
     if (password !== confirmPassword) return setError('Passwords do not match');
 
     setLoading(true);
-
-    setTimeout(() => {
-      const users = getLocalDB();
-      const userExists = users.some(u => u.email.toLowerCase() === email.toLowerCase());
-
-      if (userExists) {
-        setError('An account with this email already exists');
-        setLoading(false);
-        return;
-      }
-
-      const newUser = {
-        name,
-        email,
-        password,
-        picture: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(name)}`,
-        sub: `local|${Date.now()}`
-      };
-
-      users.push(newUser);
-      saveToLocalDB(users);
-
-      setSuccess('Account created successfully! Logging in...');
-      
+    try {
+      const user = await apiRegister(name, email, password);
+      setSuccess('Account created! Logging you in…');
       setTimeout(() => {
-        onLoginSuccess(newUser);
+        onLoginSuccess(user);
         setLoading(false);
-      }, 1000);
-    }, 800);
+      }, 700);
+    } catch (err) {
+      setError(extractErrorMessage(err));
+      setLoading(false);
+    }
   };
 
-  // Handle local signin
-  const handleSignin = (e) => {
+  // ── Sign In ──────────────────────────────────────────────────────────────
+
+  const handleSignin = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -86,47 +73,29 @@ const AuthModal = ({ type, onClose, onLoginSuccess }) => {
     if (!password) return setError('Please enter your password');
 
     setLoading(true);
-
-    setTimeout(() => {
-      const users = getLocalDB();
-      const user = users.find(
-        u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
-      );
-
-      if (!user) {
-        setError('Invalid email or password');
-        setLoading(false);
-        return;
-      }
-
+    try {
+      const user = await apiLogin(email, password);
       setSuccess('Logged in successfully!');
-      
       setTimeout(() => {
         onLoginSuccess(user);
         setLoading(false);
-      }, 800);
-    }, 600);
+      }, 500);
+    } catch (err) {
+      setError(extractErrorMessage(err));
+      setLoading(false);
+    }
   };
 
-  // Handle real Google OAuth success — decode JWT credential
-  const handleGoogleSuccess = (credentialResponse) => {
+  // ── Google ───────────────────────────────────────────────────────────────
+
+  const handleGoogleSuccess = async (credentialResponse) => {
     setLoading(true);
     setError('');
     try {
-      const base64Payload = credentialResponse.credential.split('.')[1];
-      const payload = JSON.parse(atob(base64Payload.replace(/-/g, '+').replace(/_/g, '/')));
-
-      const googleUser = {
-        name: payload.name,
-        email: payload.email,
-        picture: payload.picture,
-        sub: `google-oauth2|${payload.sub}`,
-      };
-
-      onLoginSuccess(googleUser);
+      const user = await apiLoginWithGoogle(credentialResponse.credential);
+      onLoginSuccess(user);
     } catch (err) {
-      setError('Google sign-in failed. Please try again.');
-      console.error('Google credential decode error:', err);
+      setError(extractErrorMessage(err));
       setLoading(false);
     }
   };
@@ -226,7 +195,6 @@ const AuthModal = ({ type, onClose, onLoginSuccess }) => {
                   Sign in securely with your Google account.
                 </p>
 
-                {/* Real Google Sign-In button */}
                 <div className="w-full flex justify-center">
                   <GoogleLogin
                     onSuccess={handleGoogleSuccess}
@@ -304,6 +272,17 @@ const AuthModal = ({ type, onClose, onLoginSuccess }) => {
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   ) : 'Sign In'}
                 </button>
+
+                <p className="text-center text-xs text-slate-500">
+                  No account yet?{' '}
+                  <button
+                    type="button"
+                    onClick={() => { setActiveTab('signup'); setError(''); }}
+                    className="text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+                  >
+                    Create one
+                  </button>
+                </p>
               </form>
             )}
 
@@ -379,6 +358,17 @@ const AuthModal = ({ type, onClose, onLoginSuccess }) => {
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   ) : 'Create Account'}
                 </button>
+
+                <p className="text-center text-xs text-slate-500">
+                  Already have an account?{' '}
+                  <button
+                    type="button"
+                    onClick={() => { setActiveTab('login'); setError(''); }}
+                    className="text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+                  >
+                    Sign in
+                  </button>
+                </p>
               </form>
             )}
           </div>

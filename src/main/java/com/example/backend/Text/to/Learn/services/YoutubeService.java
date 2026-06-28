@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Service responsible for fetching YouTube video links relevant to a given lesson topic.
@@ -68,8 +69,34 @@ public class YoutubeService {
                         .queryParam("key", apiKey)           // authenticate the API request
                         .build())
                 .retrieve()
+                // Handle 4xx errors (e.g., 403 Forbidden = invalid/missing API key, quota exceeded)
+                .onStatus(status -> status.is4xxClientError(), clientResponse ->
+                        clientResponse.bodyToMono(String.class)
+                                .doOnNext(body -> log.error(
+                                        "YouTube API 4xx error for query '{}'. Status: {}. Body: {}",
+                                        query, clientResponse.statusCode(), body))
+                                .thenReturn(new RuntimeException(
+                                        "YouTube API client error: " + clientResponse.statusCode())))
+                // Handle 5xx server errors
+                .onStatus(status -> status.is5xxServerError(), clientResponse ->
+                        clientResponse.bodyToMono(String.class)
+                                .doOnNext(body -> log.error(
+                                        "YouTube API 5xx error for query '{}'. Status: {}. Body: {}",
+                                        query, clientResponse.statusCode(), body))
+                                .thenReturn(new RuntimeException(
+                                        "YouTube API server error: " + clientResponse.statusCode())))
                 .bodyToMono(Map.class)
+                // Graceful fallback: log and return empty Mono so course generation continues
+                .onErrorResume(ex -> {
+                    log.warn("YouTube API call failed for query '{}': {}. Skipping video.", query, ex.getMessage());
+                    return reactor.core.publisher.Mono.empty();
+                })
                 .block(); // block the reactive call — acceptable in this synchronous context
+
+        // Guard: return null if the API call failed or returned no response
+        if (response == null) {
+            return null;
+        }
 
         // Extract the items list from the response
         var items = (java.util.List<Map<String, Object>>) response.get("items");
@@ -86,5 +113,28 @@ public class YoutubeService {
 
         log.info("YouTube video found for query '{}': {}", query, videoUrl);
         return videoUrl;
+    }
+
+    public boolean isHealthy() {
+        try {
+            String response = Objects.requireNonNull(webClient.get()
+                            .uri(uriBuilder -> uriBuilder
+                                    .path("/channels")
+                                    .queryParam("part", "id")
+                                    .queryParam("mine", "true")
+                                    .queryParam("key", apiKey)
+                                    .build())
+                            .retrieve()
+                            .toBodilessEntity()
+                            .block())
+                    .toString();
+
+            log.info("Youtube service health response : '{}' ", response);
+
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+//            return false;
+        }
     }
 }

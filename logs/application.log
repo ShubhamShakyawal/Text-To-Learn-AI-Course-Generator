@@ -1,0 +1,762 @@
+2026-06-28T00:00:51.137+05:30  INFO 13748 --- [Text-to-Learn] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-28T00:00:51.170+05:30  INFO 13748 --- [Text-to-Learn] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-28T00:00:53.325+05:30  INFO 13748 --- [Text-to-Learn] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T00:00:53.330+05:30  INFO 13748 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-28T00:00:57.335+05:30  INFO 13748 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-28T00:01:11.772+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 11412 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T00:01:11.782+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T00:01:14.532+05:30  INFO 11412 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T00:01:14.997+05:30  INFO 11412 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 436 ms. Found 3 JPA repository interfaces.
+2026-06-28T00:01:15.560+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T00:01:15.577+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 56 properties registered.
+2026-06-28T00:01:16.831+05:30  INFO 11412 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T00:01:16.875+05:30  INFO 11412 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T00:01:16.876+05:30  INFO 11412 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T00:01:17.205+05:30  INFO 11412 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 5253 ms
+2026-06-28T00:01:17.799+05:30  INFO 11412 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T00:01:17.974+05:30  INFO 11412 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T00:01:19.519+05:30  INFO 11412 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T00:01:19.619+05:30  INFO 11412 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T00:01:24.830+05:30  INFO 11412 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7305cfb1
+2026-06-28T00:01:24.834+05:30  INFO 11412 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T00:01:25.252+05:30  WARN 11412 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T00:01:27.030+05:30  INFO 11412 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T00:01:29.983+05:30  INFO 11412 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T00:01:32.391+05:30  INFO 11412 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T00:01:32.660+05:30  INFO 11412 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T00:01:32.920+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T00:01:33.530+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T00:01:33.852+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T00:01:33.983+05:30  WARN 11412 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T00:01:35.915+05:30  INFO 11412 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T00:01:35.960+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 25.644 seconds (process running for 27.316)
+2026-06-28T00:01:35.971+05:30  INFO 11412 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T00:01:41.046+05:30  INFO 11412 --- [Text-to-Learn] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T00:01:41.047+05:30  INFO 11412 --- [Text-to-Learn] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T00:01:41.051+05:30  INFO 11412 --- [Text-to-Learn] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-06-28T00:06:28.927+05:30  INFO 11412 --- [Text-to-Learn] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-28T00:06:28.948+05:30  INFO 11412 --- [Text-to-Learn] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-28T00:06:31.074+05:30  INFO 11412 --- [Text-to-Learn] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T00:06:31.081+05:30  INFO 11412 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-28T00:06:34.615+05:30  INFO 11412 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-28T00:06:47.045+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 8292 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T00:06:47.056+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T00:06:49.843+05:30  INFO 8292 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T00:06:50.302+05:30  INFO 8292 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 430 ms. Found 3 JPA repository interfaces.
+2026-06-28T00:06:50.954+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T00:06:50.971+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 56 properties registered.
+2026-06-28T00:06:52.328+05:30  INFO 8292 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T00:06:52.371+05:30  INFO 8292 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T00:06:52.372+05:30  INFO 8292 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T00:06:52.630+05:30  INFO 8292 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 5405 ms
+2026-06-28T00:06:53.230+05:30  INFO 8292 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T00:06:53.389+05:30  INFO 8292 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T00:06:54.826+05:30  INFO 8292 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T00:06:54.923+05:30  INFO 8292 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T00:06:59.589+05:30  INFO 8292 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@21ffc00e
+2026-06-28T00:06:59.592+05:30  INFO 8292 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T00:06:59.994+05:30  WARN 8292 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T00:07:01.129+05:30  INFO 8292 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T00:07:04.151+05:30  INFO 8292 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T00:07:07.271+05:30  INFO 8292 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T00:07:07.533+05:30  INFO 8292 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T00:07:07.804+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T00:07:08.395+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T00:07:08.577+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T00:07:08.706+05:30  WARN 8292 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T00:07:10.717+05:30  INFO 8292 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T00:07:10.741+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 25.189 seconds (process running for 26.828)
+2026-06-28T00:07:10.751+05:30  INFO 8292 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T00:07:17.967+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T00:07:17.968+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T00:07:17.972+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-06-28T00:07:18.165+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'India'
+2026-06-28T00:07:21.327+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'India': https://www.youtube.com/watch?v=XMDXU_xPztg
+2026-06-28T00:07:36.054+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : Requesting AI  for Connection Status: 
+2026-06-28T00:07:36.056+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'India'
+2026-06-28T00:07:36.694+05:30  INFO 8292 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'India': https://www.youtube.com/watch?v=XMDXU_xPztg
+2026-06-28T00:59:31.792+05:30  INFO 8292 --- [Text-to-Learn] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-28T00:59:33.900+05:30  INFO 8292 --- [Text-to-Learn] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-28T01:00:51.223+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 14040 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T01:00:51.241+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T01:00:55.240+05:30  INFO 14040 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T01:00:55.800+05:30  INFO 14040 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 513 ms. Found 4 JPA repository interfaces.
+2026-06-28T01:00:56.625+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T01:00:56.641+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 56 properties registered.
+2026-06-28T01:00:58.567+05:30  INFO 14040 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T01:00:58.621+05:30  INFO 14040 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T01:00:58.622+05:30  INFO 14040 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T01:00:58.917+05:30  INFO 14040 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 7350 ms
+2026-06-28T01:00:59.574+05:30  INFO 14040 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T01:00:59.798+05:30  INFO 14040 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T01:01:01.465+05:30  INFO 14040 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T01:01:01.593+05:30  INFO 14040 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T01:01:07.257+05:30  INFO 14040 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@696105c4
+2026-06-28T01:01:07.262+05:30  INFO 14040 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T01:01:07.659+05:30  WARN 14040 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T01:01:08.747+05:30  INFO 14040 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T01:01:12.251+05:30  INFO 14040 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T01:01:14.406+05:30  WARN 14040 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc.warn              : HHH000247: ErrorCode: 0, SQLState: 00000
+2026-06-28T01:01:14.407+05:30  WARN 14040 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc.warn              : constraint "uk6dotkott2kjsp8vw4d0m25fb7" of relation "users" does not exist, skipping
+2026-06-28T01:01:16.042+05:30  INFO 14040 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T01:01:16.312+05:30  INFO 14040 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T01:01:16.918+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T01:01:17.611+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T01:01:17.868+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T01:01:18.030+05:30  WARN 14040 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T01:01:18.112+05:30  WARN 14040 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 857fa397-9f6e-4ad0-bfb1-2e49aeeef5cc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-28T01:01:18.139+05:30  INFO 14040 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-28T01:01:21.089+05:30  INFO 14040 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T01:01:21.107+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 39.74 seconds (process running for 42.964)
+2026-06-28T01:01:21.118+05:30  INFO 14040 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T01:03:54.615+05:30  INFO 14040 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T01:03:54.645+05:30  INFO 14040 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T01:03:54.650+05:30  INFO 14040 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-06-28T01:20:12.534+05:30  INFO 14040 --- [Text-to-Learn] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-28T01:20:13.183+05:30  INFO 14040 --- [Text-to-Learn] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-28T01:20:20.486+05:30  INFO 14040 --- [Text-to-Learn] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T01:28:05.717+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 15844 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T01:28:05.769+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T01:28:09.022+05:30  INFO 15844 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T01:28:09.873+05:30  INFO 15844 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 818 ms. Found 5 JPA repository interfaces.
+2026-06-28T01:28:10.534+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T01:28:10.577+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 56 properties registered.
+2026-06-28T01:28:12.324+05:30  INFO 15844 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T01:28:12.397+05:30  INFO 15844 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T01:28:12.398+05:30  INFO 15844 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T01:28:12.682+05:30  INFO 15844 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 6769 ms
+2026-06-28T01:28:13.085+05:30  INFO 15844 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T01:28:13.313+05:30  INFO 15844 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T01:28:15.026+05:30  INFO 15844 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T01:28:15.128+05:30  INFO 15844 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T01:28:25.014+05:30  INFO 15844 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e5c7588
+2026-06-28T01:28:25.018+05:30  INFO 15844 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T01:28:25.444+05:30  WARN 15844 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T01:28:26.543+05:30  INFO 15844 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T01:28:30.458+05:30  INFO 15844 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T01:28:34.284+05:30  INFO 15844 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T01:28:34.539+05:30  INFO 15844 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T01:28:36.864+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T01:28:37.768+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T01:28:38.074+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T01:28:38.226+05:30  WARN 15844 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T01:28:38.304+05:30  WARN 15844 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 138b2ff0-e9fb-41e9-9e28-db7626f859c7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-28T01:28:38.326+05:30  INFO 15844 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-28T01:28:41.333+05:30  INFO 15844 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T01:28:41.367+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 37.503 seconds (process running for 39.562)
+2026-06-28T01:28:41.383+05:30  INFO 15844 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T01:28:57.106+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T01:28:57.109+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T01:28:57.121+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2026-06-28T01:29:32.739+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:52bc63e5-f08f-4014-9bac-c65156ab3bd6, topic:'Redux toolkit'
+2026-06-28T01:29:32.741+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='Redux toolkit', guest id=52bc63e5-f08f-4014-9bac-c65156ab3bd6
+2026-06-28T01:29:32.742+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'Redux toolkit'
+2026-06-28T01:30:12.365+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'Redux toolkit'. Response length: 3307 chars
+2026-06-28T01:30:12.460+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux vs Redux Toolkit comparison'
+2026-06-28T01:30:14.377+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux vs Redux Toolkit comparison': https://www.youtube.com/watch?v=md0kQyheSNM
+2026-06-28T01:30:14.377+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Setting up Redux Toolkit in a React project'
+2026-06-28T01:30:15.023+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Setting up Redux Toolkit in a React project': https://www.youtube.com/watch?v=LWiMVumNxZ8
+2026-06-28T01:30:15.024+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit createSlice tutorial'
+2026-06-28T01:30:15.409+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit createSlice tutorial': https://www.youtube.com/watch?v=5yEG6GhoJBs
+2026-06-28T01:30:15.410+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit reducers and Immer'
+2026-06-28T01:30:15.861+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit reducers and Immer': https://www.youtube.com/watch?v=kgCjXjJkZ-Y
+2026-06-28T01:30:15.861+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit createAsyncThunk'
+2026-06-28T01:30:16.360+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit createAsyncThunk': https://www.youtube.com/watch?v=_MReTAtN6eo
+2026-06-28T01:30:16.360+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit best practices'
+2026-06-28T01:30:16.852+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit best practices': https://www.youtube.com/watch?v=LWiMVumNxZ8
+2026-06-28T01:30:16.853+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit state persistence'
+2026-06-28T01:30:17.151+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit state persistence': https://www.youtube.com/watch?v=0Uva7sEmDhk
+2026-06-28T01:30:17.152+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit selectors and normalization'
+2026-06-28T01:30:17.411+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit selectors and normalization': https://www.youtube.com/watch?v=IgJWnQQOTsQ
+2026-06-28T01:30:17.419+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Redux Toolkit full project example'
+2026-06-28T01:30:17.919+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Redux Toolkit full project example': https://www.youtube.com/watch?v=ZP6zJLGdR8s
+2026-06-28T01:30:25.455+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'Mastering Redux Toolkit: From Basics to Advanced' saved for guest id: 52bc63e5-f08f-4014-9bac-c65156ab3bd6
+2026-06-28T01:35:58.811+05:30  WARN 15844 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4d542937 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-28T01:36:04.854+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [g_state={"i_l":0,"i_ll":1782590726703,"i_b":"qEHzaJLJ7/+SBd4jA44l1v4RzWPVFWjqYP0Wd8/zwMk","i_e":{"enable_itp_optimization":24},"i_et":1782590726703}] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2026-06-28T01:36:04.979+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/register — email: shubham@texttolearn.com
+2026-06-28T01:36:04.980+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registering new user with email: shubham@texttolearn.com
+2026-06-28T01:36:09.073+05:30  WARN 15844 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@41aaac6d (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-28T01:36:21.328+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User registered successfully with id: 1
+2026-06-28T01:36:23.827+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Transferred 1 course(s) from guest 52bc63e5-f08f-4014-9bac-c65156ab3bd6 to user 1
+2026-06-28T01:36:27.838+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : Transferred 1 guest course(s) from 52bc63e5-f08f-4014-9bac-c65156ab3bd6 to user 1
+2026-06-28T01:36:27.839+05:30  INFO 15844 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : Registration successful for user id: 1
+2026-06-28T01:44:51.030+05:30  INFO 15844 --- [Text-to-Learn] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-28T01:44:51.253+05:30  INFO 15844 --- [Text-to-Learn] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-28T01:44:55.407+05:30  INFO 15844 --- [Text-to-Learn] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T01:44:55.543+05:30  INFO 15844 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-28T01:44:58.397+05:30  INFO 15844 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-28T01:48:55.797+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 18428 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T01:48:55.833+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T01:49:00.814+05:30  INFO 18428 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T01:49:01.398+05:30  INFO 18428 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 551 ms. Found 5 JPA repository interfaces.
+2026-06-28T01:49:03.044+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T01:49:03.274+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 56 properties registered.
+2026-06-28T01:49:08.455+05:30  INFO 18428 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T01:49:08.539+05:30  INFO 18428 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T01:49:08.540+05:30  INFO 18428 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T01:49:08.790+05:30  INFO 18428 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 12581 ms
+2026-06-28T01:49:09.222+05:30  INFO 18428 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T01:49:09.433+05:30  INFO 18428 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T01:49:11.439+05:30  INFO 18428 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T01:49:11.584+05:30  INFO 18428 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T01:49:17.660+05:30  INFO 18428 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2573b149
+2026-06-28T01:49:17.664+05:30  INFO 18428 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T01:49:18.072+05:30  WARN 18428 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T01:49:19.140+05:30  INFO 18428 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T01:49:23.449+05:30  INFO 18428 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T01:49:25.713+05:30  INFO 18428 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T01:49:25.950+05:30  INFO 18428 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T01:49:28.363+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T01:49:29.183+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T01:49:29.517+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T01:49:29.671+05:30  WARN 18428 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T01:49:29.751+05:30  WARN 18428 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 73847bfc-47d0-4d70-889b-03fdc4bdf091
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-28T01:49:29.782+05:30  INFO 18428 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-28T01:49:33.046+05:30  INFO 18428 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T01:49:33.077+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 39.979 seconds (process running for 46.536)
+2026-06-28T01:49:33.105+05:30  INFO 18428 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T01:49:50.340+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [g_state={"i_l":0,"i_ll":1782590726703,"i_b":"qEHzaJLJ7/+SBd4jA44l1v4RzWPVFWjqYP0Wd8/zwMk","i_e":{"enable_itp_optimization":24},"i_et":1782590726703};] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2026-06-28T01:49:50.371+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T01:49:50.372+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T01:49:50.384+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2026-06-28T01:50:09.169+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:325cc48a-728c-435c-88a9-4f82156cab72, topic:'how to swim'
+2026-06-28T01:50:09.171+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='how to swim', guest id=325cc48a-728c-435c-88a9-4f82156cab72
+2026-06-28T01:50:09.171+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'how to swim'
+2026-06-28T01:50:41.504+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'how to swim'. Response length: 2520 chars
+2026-06-28T01:50:41.625+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'swimming safety tips'
+2026-06-28T01:50:43.655+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'swimming safety tips': https://www.youtube.com/watch?v=pDDWEqI45M4
+2026-06-28T01:50:43.656+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'beginner swimming strokes'
+2026-06-28T01:50:44.011+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'beginner swimming strokes': https://www.youtube.com/watch?v=vuYF5RXyVXM
+2026-06-28T01:50:44.012+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'how to get comfortable in water'
+2026-06-28T01:50:44.306+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'how to get comfortable in water': https://www.youtube.com/watch?v=jyA-Q7j2UOs
+2026-06-28T01:50:44.307+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'freestyle swimming technique'
+2026-06-28T01:50:44.688+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'freestyle swimming technique': https://www.youtube.com/watch?v=5HLW2AI1Ink
+2026-06-28T01:50:44.689+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'backstroke breathing technique'
+2026-06-28T01:50:44.967+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'backstroke breathing technique': https://www.youtube.com/watch?v=_qPycmQPz28
+2026-06-28T01:50:44.968+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'swimming stamina training'
+2026-06-28T01:50:45.332+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'swimming stamina training': https://www.youtube.com/watch?v=02po5t2ibro
+2026-06-28T01:50:45.333+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'advanced swimming turns'
+2026-06-28T01:50:45.735+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'advanced swimming turns': https://www.youtube.com/watch?v=foGlgwWk76I
+2026-06-28T01:50:45.735+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'open water swimming tips'
+2026-06-28T01:50:46.078+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'open water swimming tips': https://www.youtube.com/watch?v=eAl78kTsBLw
+2026-06-28T01:50:46.079+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'swimming for triathlons'
+2026-06-28T01:50:46.449+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'swimming for triathlons': https://www.youtube.com/watch?v=5k6_OOyM86Q
+2026-06-28T01:50:50.797+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'How to Swim' saved for guest id: 325cc48a-728c-435c-88a9-4f82156cab72
+2026-06-28T01:56:32.346+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:242764ec-9268-4de7-ac75-f010631e73a6, topic:'React Hooks'
+2026-06-28T01:56:32.347+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='React Hooks', guest id=242764ec-9268-4de7-ac75-f010631e73a6
+2026-06-28T01:56:32.347+05:30  INFO 18428 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'React Hooks'
+2026-06-28T01:56:54.626+05:30  WARN 18428 --- [Text-to-Learn] [reactor-http-nio-2] r.netty.http.client.HttpClientConnect    : [cd5d813d-2, L:/10.140.115.204:61633 - R:openrouter.ai/104.18.2.115:443] The connection observed an error
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T01:56:54.750+05:30 ERROR 18428 --- [Text-to-Learn] [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Course generation failed for topic: React Hooks] with root cause
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T02:00:02.206+05:30  INFO 18428 --- [Text-to-Learn] [scheduling-1] c.e.b.T.t.L.s.GuestCleanupService        : Guest cleanup: no expired sessions found
+2026-06-28T02:00:03.858+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 13300 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T02:00:03.892+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T02:00:08.443+05:30  INFO 13300 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T02:00:09.023+05:30  INFO 13300 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 552 ms. Found 5 JPA repository interfaces.
+2026-06-28T02:00:10.040+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T02:00:10.137+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 78 properties registered.
+2026-06-28T02:00:14.863+05:30  INFO 13300 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T02:00:15.280+05:30  INFO 13300 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T02:00:15.627+05:30  INFO 13300 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T02:00:18.097+05:30  INFO 13300 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 13928 ms
+2026-06-28T02:00:19.126+05:30  INFO 13300 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T02:00:19.451+05:30  INFO 13300 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T02:00:21.375+05:30  INFO 13300 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T02:00:21.627+05:30  INFO 13300 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T02:00:57.361+05:30  WARN 13300 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 08006
+2026-06-28T02:00:57.362+05:30  WARN 13300 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc.error             : SSL error: Remote host terminated the handshake
+2026-06-28T02:00:57.365+05:30  WARN 13300 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc                   : HHH100046: Could not obtain connection to query JDBC database metadata
+
+org.hibernate.exception.JDBCConnectionException: Unable to obtain isolated JDBC connection [SSL error: Remote host terminated the handshake] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:80) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:34) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:115) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:101) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:51) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:366) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironment(JdbcEnvironmentInitiator.java:143) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:120) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:80) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:133) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:260) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:235) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:212) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:251) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:203) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1392) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.populateSessionFactoryBuilder(EntityManagerFactoryBuilderImpl.java:1472) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-7.0.3.jar:7.0.3]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:433) ~[spring-orm-7.0.3.jar:7.0.3]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:416) ~[spring-orm-7.0.3.jar:7.0.3]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-7.0.3.jar:7.0.3]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:409) ~[spring-orm-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1362) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1194) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:356) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1712) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1461) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:231) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:185) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:180) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:165) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:97) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.context.servlet.WebApplicationContextInitializer.initialize(WebApplicationContextInitializer.java:53) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.tomcat.servlet.DeferredServletContainerInitializers.onStartup(DeferredServletContainerInitializers.java:55) ~[spring-boot-tomcat-4.0.2.jar:4.0.2]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4416) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1162) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1158) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:714) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:780) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1162) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1158) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:714) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:864) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:435) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.springframework.boot.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:131) ~[spring-boot-tomcat-4.0.2.jar:4.0.2]
+	at org.springframework.boot.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:110) ~[spring-boot-tomcat-4.0.2.jar:4.0.2]
+	at org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:408) ~[spring-boot-tomcat-4.0.2.jar:4.0.2]
+	at org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:166) ~[spring-boot-tomcat-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:190) ~[spring-boot-web-server-4.0.2.jar:4.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164) ~[spring-boot-web-server-4.0.2.jar:4.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:614) ~[spring-context-7.0.3.jar:7.0.3]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.2.jar:4.0.2]
+	at com.example.backend.Text.to.Learn.TextToLearnApplication.main(TextToLearnApplication.java:35) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: SSL error: Remote host terminated the handshake
+	at org.postgresql.ssl.MakeSSL.convert(MakeSSL.java:53) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableSSL(ConnectionFactoryImpl.java:658) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:289) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:57) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:290) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.Driver.makeConnection(Driver.java:448) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.9.jar:42.7.9]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DataSourceConnectionProvider.getConnection(DataSourceConnectionProvider.java:137) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:508) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:48) ~[hibernate-core-7.2.1.Final.jar:7.2.1.Final]
+	... 108 common frames omitted
+Caused by: javax.net.ssl.SSLHandshakeException: Remote host terminated the handshake
+	at java.base/sun.security.ssl.SSLSocketImpl.handleEOF(SSLSocketImpl.java:1714) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1514) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) ~[na:na]
+	at org.postgresql.ssl.MakeSSL.convert(MakeSSL.java:51) ~[postgresql-42.7.9.jar:42.7.9]
+	... 125 common frames omitted
+Caused by: java.io.EOFException: SSL peer shut down incorrectly
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:494) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.decode(SSLSocketInputRecord.java:160) ~[na:na]
+	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:111) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) ~[na:na]
+	... 129 common frames omitted
+
+2026-06-28T02:00:57.913+05:30  WARN 13300 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T02:00:57.955+05:30  INFO 13300 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [undefined/unknown]
+	Database driver: undefined/unknown
+	Database dialect: PostgreSQLDialect
+	Database version: 13.0
+	Default catalog/schema: unknown/unknown
+	Autocommit mode: undefined/unknown
+	Isolation level: NONE [default NONE]
+	JDBC fetch size: undefined/unknown
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T02:01:05.052+05:30  INFO 13300 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T02:01:05.204+05:30  INFO 13300 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T02:01:09.555+05:30  INFO 13300 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3da8a302
+2026-06-28T02:01:09.560+05:30  INFO 13300 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T02:01:30.964+05:30  INFO 13300 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T02:01:31.212+05:30  INFO 13300 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T02:01:33.917+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T02:01:34.777+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T02:01:35.128+05:30  INFO 13300 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T02:01:35.299+05:30  WARN 13300 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T02:01:35.383+05:30  WARN 13300 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f0053dc7-d279-4eba-9dee-3eb28f8566e9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-28T02:01:35.407+05:30  INFO 13300 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-28T02:01:38.585+05:30  WARN 13300 --- [Text-to-Learn] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-06-28T02:01:38.595+05:30  INFO 13300 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T02:01:38.601+05:30  INFO 13300 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-28T02:01:42.976+05:30  INFO 13300 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-28T02:01:43.073+05:30  INFO 13300 --- [Text-to-Learn] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-28T02:01:43.110+05:30 ERROR 13300 --- [Text-to-Learn] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-06-28T02:01:59.878+05:30  INFO 18428 --- [Text-to-Learn] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-28T02:02:00.092+05:30  INFO 18428 --- [Text-to-Learn] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-28T02:02:03.144+05:30  INFO 18428 --- [Text-to-Learn] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T02:02:03.591+05:30  INFO 18428 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-28T02:02:08.440+05:30  INFO 18428 --- [Text-to-Learn] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-28T02:02:49.862+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 3340 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T02:02:49.878+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T02:02:52.731+05:30  INFO 3340 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T02:02:53.257+05:30  INFO 3340 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 494 ms. Found 5 JPA repository interfaces.
+2026-06-28T02:02:53.861+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T02:02:53.877+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 78 properties registered.
+2026-06-28T02:02:55.482+05:30  INFO 3340 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T02:02:55.630+05:30  INFO 3340 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T02:02:55.631+05:30  INFO 3340 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T02:02:56.008+05:30  INFO 3340 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 5967 ms
+2026-06-28T02:02:56.325+05:30  INFO 3340 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T02:02:56.500+05:30  INFO 3340 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T02:02:57.951+05:30  INFO 3340 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T02:02:58.075+05:30  INFO 3340 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T02:03:03.718+05:30  INFO 3340 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43de9fc9
+2026-06-28T02:03:03.723+05:30  INFO 3340 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T02:03:04.097+05:30  WARN 3340 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T02:03:05.592+05:30  INFO 3340 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T02:03:09.651+05:30  INFO 3340 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T02:03:11.842+05:30  INFO 3340 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T02:03:12.076+05:30  INFO 3340 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T02:03:14.286+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T02:03:15.079+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T02:03:15.376+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T02:03:15.530+05:30  WARN 3340 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T02:03:15.609+05:30  WARN 3340 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 850579b7-2d76-42f0-812a-a4735e7a8558
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-28T02:03:15.634+05:30  INFO 3340 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-28T02:03:18.436+05:30  INFO 3340 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T02:03:18.470+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 31.081 seconds (process running for 33.177)
+2026-06-28T02:03:18.489+05:30  INFO 3340 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T02:03:50.922+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T02:03:50.923+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T02:03:50.929+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2026-06-28T02:05:10.827+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:242764ec-9268-4de7-ac75-f010631e73a6, topic:'how to make tea'
+2026-06-28T02:05:10.828+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='how to make tea', guest id=242764ec-9268-4de7-ac75-f010631e73a6
+2026-06-28T02:05:10.829+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'how to make tea'
+2026-06-28T02:05:45.512+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'how to make tea'. Response length: 3092 chars
+2026-06-28T02:05:46.222+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'History of tea and tea types'
+2026-06-28T02:05:47.154+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'History of tea and tea types': https://www.youtube.com/watch?v=LaLvVc1sS20
+2026-06-28T02:05:47.154+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Health benefits of drinking tea'
+2026-06-28T02:05:47.516+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Health benefits of drinking tea': https://www.youtube.com/watch?v=t4Gcrc9lMog
+2026-06-28T02:05:47.517+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'How to choose tea for different occasions'
+2026-06-28T02:05:48.274+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'How to choose tea for different occasions': https://www.youtube.com/watch?v=nfiF5yteu9s
+2026-06-28T02:05:48.277+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Assessing tea quality and grades'
+2026-06-28T02:05:48.712+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Assessing tea quality and grades': https://www.youtube.com/watch?v=kiqsrAzgbZ8
+2026-06-28T02:05:48.715+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Ideal water temperature for brewing tea'
+2026-06-28T02:05:49.087+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Ideal water temperature for brewing tea': https://www.youtube.com/watch?v=RthuUYrbQW4
+2026-06-28T02:05:49.087+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Essential tea brewing tools'
+2026-06-28T02:05:49.505+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Essential tea brewing tools': https://www.youtube.com/watch?v=F2roSiv4qGY
+2026-06-28T02:05:49.505+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Tea serving etiquette and presentation'
+2026-06-28T02:05:49.863+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Tea serving etiquette and presentation': https://www.youtube.com/watch?v=UooLWmjF1so
+2026-06-28T02:05:49.867+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Tea and food pairing combinations'
+2026-06-28T02:05:50.256+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Tea and food pairing combinations': https://www.youtube.com/watch?v=jD4E95NeYtg
+2026-06-28T02:05:56.779+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'The Art of Tea Making: A Comprehensive Guide' saved for guest id: 242764ec-9268-4de7-ac75-f010631e73a6
+2026-06-28T02:10:47.330+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:242764ec-9268-4de7-ac75-f010631e73a6, topic:'how to play guitar'
+2026-06-28T02:10:47.331+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='how to play guitar', guest id=242764ec-9268-4de7-ac75-f010631e73a6
+2026-06-28T02:10:47.331+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'how to play guitar'
+2026-06-28T02:12:01.871+05:30  WARN 3340 --- [Text-to-Learn] [reactor-http-nio-2] r.netty.http.client.HttpClientConnect    : [39935ae7-2, L:/10.140.115.204:62372 - R:openrouter.ai/104.18.2.115:443] The connection observed an error
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T02:12:01.922+05:30 ERROR 3340 --- [Text-to-Learn] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Course generation failed for topic: how to play guitar] with root cause
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T02:22:19.024+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:242764ec-9268-4de7-ac75-f010631e73a6, topic:'tea making'
+2026-06-28T02:22:19.024+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='tea making', guest id=242764ec-9268-4de7-ac75-f010631e73a6
+2026-06-28T02:22:19.025+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'tea making'
+2026-06-28T02:22:41.561+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'tea making'. Response length: 4096 chars
+2026-06-28T02:22:41.565+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'types of tea categories and origins'
+2026-06-28T02:23:03.932+05:30  WARN 3340 --- [Text-to-Learn] [reactor-http-nio-3] r.netty.http.client.HttpClientConnect    : [52273693-9, L:/10.140.115.204:62376 - R:www.googleapis.com/216.239.38.223:443] The connection observed an error
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T02:23:03.938+05:30  WARN 3340 --- [Text-to-Learn] [reactor-http-nio-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube API call failed for query 'types of tea categories and origins': Connection reset. Skipping video.
+2026-06-28T02:23:03.942+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'history of tea in ancient times'
+2026-06-28T02:23:04.597+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'history of tea in ancient times': https://www.youtube.com/watch?v=LaLvVc1sS20
+2026-06-28T02:23:04.597+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'traditional Japanese tea ceremony'
+2026-06-28T02:23:04.975+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'traditional Japanese tea ceremony': https://www.youtube.com/watch?v=fc500-ky7VM
+2026-06-28T02:23:04.977+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'how to choose premium tea leaves'
+2026-06-28T02:23:05.298+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'how to choose premium tea leaves': https://www.youtube.com/watch?v=yvQyQ5ePdQc
+2026-06-28T02:23:05.299+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'storing tea leaves properly'
+2026-06-28T02:23:05.629+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'storing tea leaves properly': https://www.youtube.com/watch?v=3npiynRLW0A
+2026-06-28T02:23:05.630+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'essential tea brewing equipment'
+2026-06-28T02:23:05.993+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'essential tea brewing equipment': https://www.youtube.com/watch?v=IqedXJLiMIQ
+2026-06-28T02:23:05.994+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'correct water temperature for tea brewing'
+2026-06-28T02:23:06.324+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'correct water temperature for tea brewing': https://www.youtube.com/watch?v=vRHB7uk-lJE
+2026-06-28T02:23:06.325+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'pour-over tea brewing technique'
+2026-06-28T02:23:06.664+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'pour-over tea brewing technique': https://www.youtube.com/watch?v=jfjBMGdzMfI
+2026-06-28T02:23:06.664+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'gongfu tea ceremony demonstration'
+2026-06-28T02:23:07.056+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'gongfu tea ceremony demonstration': https://www.youtube.com/watch?v=r4RLSUaVzpk
+2026-06-28T02:23:07.056+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'advanced tea tasting techniques'
+2026-06-28T02:23:07.398+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'advanced tea tasting techniques': https://www.youtube.com/watch?v=ixlOebAxhbI
+2026-06-28T02:23:07.402+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'teatime food pairing ideas'
+2026-06-28T02:23:07.720+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'teatime food pairing ideas': https://www.youtube.com/watch?v=nIH3jfS1468
+2026-06-28T02:23:07.722+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'professional tea serving tips'
+2026-06-28T02:23:08.066+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'professional tea serving tips': https://www.youtube.com/watch?v=aljA7QHFdic
+2026-06-28T02:23:13.488+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'The Art of Tea Making: From Bean to Cup' saved for guest id: 242764ec-9268-4de7-ac75-f010631e73a6
+2026-06-28T02:28:01.198+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-06-28T02:28:01.199+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-06-28T02:28:01.990+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
+2026-06-28T02:28:02.387+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Transferred 2 course(s) from guest 242764ec-9268-4de7-ac75-f010631e73a6 to user 1
+2026-06-28T02:28:03.226+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : Transferred 2 guest course(s) from 242764ec-9268-4de7-ac75-f010631e73a6 to user 1
+2026-06-28T02:28:03.227+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1

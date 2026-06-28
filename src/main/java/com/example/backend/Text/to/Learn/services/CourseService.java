@@ -6,73 +6,36 @@ import com.example.backend.Text.to.Learn.dto.CourseDTO;
 import java.util.List;
 
 /**
- * Service interface defining the business-logic contract for {@code Course} operations.
- *
- * <p>This interface is implemented by
- * {@link com.example.backend.Text.to.Learn.services.impl.CourseServiceImpl}.
- * Controllers depend on this interface (not the implementation) to keep
- * the architecture loosely coupled and easily testable.
- *
- * <p>Operations:
- * <ul>
- *   <li>Create/persist a new course from a DTO</li>
- *   <li>Retrieve all courses or a specific course by ID</li>
- *   <li>Update an existing course</li>
- *   <li>Delete a course by ID</li>
- *   <li>Generate a full course (with modules and lessons) from an AI prompt</li>
- * </ul>
+ * Service interface for {@code Course} operations.
+ * Supports both authenticated users and anonymous guest sessions.
  */
 public interface CourseService {
 
-    /**
-     * Persists a new course (with its nested modules and lessons) in the database.
-     *
-     * @param addCourseRequestDTO the course data to save
-     * @return the saved course as a {@link CourseDTO} (including the generated {@code id})
-     */
-    CourseDTO saveCourse(AddCourseRequestDTO addCourseRequestDTO);
+    // ── Authenticated user operations ─────────────────────────────────────
+
+    CourseDTO saveCourse(AddCourseRequestDTO dto, Long userId);
+    List<CourseDTO> getAllCoursesByUser(Long userId);
+    CourseDTO getCourseById(Long id, Long userId);
+    CourseDTO updateCourse(Long id, AddCourseRequestDTO dto, Long userId);
+    void deleteCourseById(Long id, Long userId);
+    CourseDTO generateCourseFromAI(String topic, Long userId);
+
+    // ── Guest session operations ───────────────────────────────────────────
+
+    CourseDTO saveCourseForGuest(AddCourseRequestDTO dto, String guestId);
+    List<CourseDTO> getAllCoursesByGuest(String guestId);
+    CourseDTO getCourseByIdForGuest(Long id, String guestId);
+    CourseDTO updateCourseForGuest(Long id, AddCourseRequestDTO dto, String guestId);
+    void deleteCourseByIdForGuest(Long id, String guestId);
+    CourseDTO generateCourseFromAIForGuest(String topic, String guestId);
 
     /**
-     * Retrieves all courses stored in the database.
+     * Transfers all unclaimed guest courses to the given authenticated user.
+     * Called immediately after login or registration.
      *
-     * @return a list of {@link CourseDTO} objects; empty list if no courses exist
+     * @param guestId the {@code GUEST_SESSION_ID} cookie value
+     * @param userId  the authenticated user to transfer courses to
+     * @return number of courses transferred
      */
-    List<CourseDTO> getAllCourses();
-
-    /**
-     * Retrieves a single course by its unique identifier.
-     *
-     * @param id the primary key of the course to retrieve
-     * @return the matching {@link CourseDTO}
-     * @throws org.springframework.web.server.ResponseStatusException (404) if not found
-     */
-    CourseDTO getCourseById(Long id);
-
-    /**
-     * Updates the title and description of an existing course.
-     *
-     * @param id           the primary key of the course to update
-     * @param addCourseDTO the new course data to apply
-     * @return the updated course as a {@link CourseDTO}
-     * @throws org.springframework.web.server.ResponseStatusException (404) if not found
-     */
-    CourseDTO updateCourse(Long id, AddCourseRequestDTO addCourseDTO);
-
-    /**
-     * Deletes a course (and its child modules/lessons via cascade) by its unique identifier.
-     *
-     * @param id the primary key of the course to delete
-     * @throws org.springframework.web.server.ResponseStatusException (404) if not found
-     */
-    void deleteCourseById(Long id);
-
-    /**
-     * Generates a structured course from an AI model based on the given topic,
-     * enriches each lesson with a YouTube video URL, and persists the result.
-     *
-     * @param topic the subject or keyword to generate a course for
-     * @return the generated and saved course as a {@link CourseDTO}
-     * @throws RuntimeException if the AI response cannot be parsed or saved
-     */
-    CourseDTO generateCourseFromAI(String topic);
+    int transferGuestCourses(String guestId, Long userId);
 }

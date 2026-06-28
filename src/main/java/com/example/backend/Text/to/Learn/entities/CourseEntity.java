@@ -1,5 +1,6 @@
 package com.example.backend.Text.to.Learn.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,6 +13,9 @@ import java.util.List;
  *
  * <p>A course is the top-level container in the content hierarchy:
  * <pre>Course → Module → Lesson</pre>
+ *
+ * <p>Each course is owned by a single {@link UserEntity}. The {@code user_id} foreign-key
+ * column is managed by JPA and is used to scope course queries per authenticated user.
  *
  * <p>The {@code modules} field maintains a bidirectional one-to-many relationship
  * with {@link ModuleEntity}. Cascade operations ensure that saving or deleting a
@@ -46,6 +50,25 @@ public class CourseEntity {
      */
     @Column(length = 2000)
     private String description;
+
+    /**
+     * The user who generated and owns this course.
+     *
+     * <p>{@code @JsonIgnore} prevents the full user object from being serialised into
+     * course API responses (avoids circular references and leaking user data).
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private UserEntity user;
+
+    /**
+     * UUID of the guest session that owns this course.
+     * Null when the course belongs to an authenticated user.
+     * Set to null (and {@code user} set) when ownership is transferred on login.
+     */
+    @Column(name = "guest_id")
+    private String guestId;
 
     /**
      * Ordered list of modules that belong to this course.
