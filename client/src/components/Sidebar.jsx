@@ -26,15 +26,28 @@ const Sidebar = () => {
   const [page, setPage]       = useState(0);
 
   const { isAuthenticated, user, login, logout } = useAuth();
-  const { courses } = useCourse();
+  const { courses, isLoadingCourses } = useCourse();
 
   const toggleSidebar = () => {
     setIsOpen((o) => !o);
     if (isOpen) setSearch(''); // clear search on collapse
   };
 
+  // Calculate course completion progress %
+  const calculateProgress = (course) => {
+    if (!course) return 0;
+    const modulesList = Array.isArray(course.modules) ? course.modules : [];
+    const total = modulesList.reduce((acc, m) => {
+      if (!m) return acc;
+      const lessonsList = Array.isArray(m.lessons) ? m.lessons : [];
+      return acc + lessonsList.length;
+    }, 0);
+    const completed = Array.isArray(course.completedLessons) ? course.completedLessons.length : 0;
+    return total > 0 ? Math.round((completed / total) * 100) : 0;
+  };
+
   // Sort newest first (by id or index — assumes later items are newer)
-  const sortedCourses = useMemo(() => [...courses].reverse(), [courses]);
+  const sortedCourses = useMemo(() => (Array.isArray(courses) ? [...courses].reverse() : []), [courses]);
 
   // Filter by search keywords
   const filtered = useMemo(() => {
@@ -183,7 +196,19 @@ const Sidebar = () => {
 
             {/* Course list — scrollable, fixed height */}
             <div className="flex-1 overflow-y-auto custom-scrollbar space-y-0.5 pr-0.5">
-              {paginated.length === 0 ? (
+              {isLoadingCourses ? (
+                [1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl animate-pulse ${
+                      !isOpen ? 'justify-center' : ''
+                    }`}
+                  >
+                    <div className="w-[17px] h-[17px] bg-slate-800/60 rounded-md flex-shrink-0 animate-pulse" />
+                    {isOpen && <div className="h-2.5 bg-slate-850 rounded w-2/3 animate-pulse" />}
+                  </div>
+                ))
+              ) : paginated.length === 0 ? (
                 isOpen && (
                   <p className="text-xs text-slate-600 text-center py-4 px-2">
                     {search ? 'No courses match your search.' : 'No courses yet.'}
@@ -201,7 +226,16 @@ const Sidebar = () => {
                       `}
                     >
                       <BookOpen size={17} className="flex-shrink-0" />
-                      {isOpen && <span className="truncate text-xs">{course.title}</span>}
+                      {isOpen && (
+                        <div className="flex-1 flex items-center justify-between min-w-0">
+                          <span className="truncate text-xs mr-2">{course.title}</span>
+                          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded flex-shrink-0 ${
+                            isActive ? 'bg-blue-600/20 text-blue-400' : 'bg-slate-800/60 text-slate-500'
+                          }`}>
+                            {calculateProgress(course)}%
+                          </span>
+                        </div>
+                      )}
                     </NavLink>
                   </Tooltip>
                 ))
@@ -240,22 +274,28 @@ const Sidebar = () => {
           {isAuthenticated ? (
             <div className="flex flex-col gap-1.5">
               {/* User card */}
-              <Tooltip label={`${user.name} · ${user.email}`} disabled={isOpen}>
+              <Tooltip label={`${user?.name || 'User'} · ${user?.email || ''}`} disabled={isOpen}>
                 <div className={`flex items-center gap-3 rounded-xl bg-slate-800/50 cursor-default w-full ${
                   isOpen ? 'px-3 py-2' : 'justify-center p-2'
                 }`}>
                   <div className="w-8 h-8 rounded-full border border-slate-700 flex-shrink-0 overflow-hidden bg-slate-700">
-                    <img
-                      src={user.picture}
-                      alt={user.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => { e.target.style.display = 'none'; }}
-                    />
+                    {user?.picture ? (
+                      <img
+                        src={user.picture}
+                        alt={user.name || 'User'}
+                        className="w-full h-full object-cover"
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-xs font-bold uppercase">
+                        {(user?.name || 'U').charAt(0)}
+                      </div>
+                    )}
                   </div>
                   {isOpen && (
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-slate-200 truncate">{user.name}</p>
-                      <p className="text-xs text-slate-500 truncate">{user.email}</p>
+                      <p className="text-sm font-medium text-slate-200 truncate">{user?.name || 'User'}</p>
+                      <p className="text-xs text-slate-500 truncate">{user?.email || ''}</p>
                     </div>
                   )}
                 </div>

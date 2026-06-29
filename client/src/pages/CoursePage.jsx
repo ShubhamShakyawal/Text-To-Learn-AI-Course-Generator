@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCourse } from '../context/CourseContext';
+import { useAuth } from '../hooks/useAuth';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
+import CertificateModal from '../components/CertificateModal';
 import { motion } from 'framer-motion';
-import { ChevronRight, Play, BookOpen, Clock, Layers, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, Play, BookOpen, Clock, Layers, CheckCircle2, Award } from 'lucide-react';
 
 const CoursePage = () => {
   const { courseId } = useParams();
   const { activeCourse, fetchCourse, isGenerating, error } = useCourse();
+  const { user } = useAuth();
+  const [showCertificate, setShowCertificate] = useState(false);
 
   useEffect(() => {
     // Always fetch when courseId changes; fetchCourse updates activeCourse in context
@@ -17,11 +21,20 @@ const CoursePage = () => {
     }
   }, [courseId]);
 
-  if (isGenerating && !activeCourse) return <LoadingSpinner />;
+  if (isGenerating && !activeCourse) return <LoadingSpinner message="Loading your course, please wait..." />;
   if (error) return <ErrorMessage message={error} />;
   if (!activeCourse) return <div className="p-10 text-center">Course not found.</div>;
 
   const isCompleted = (lessonId) => activeCourse.completedLessons?.includes(lessonId);
+
+  const modulesList = Array.isArray(activeCourse.modules) ? activeCourse.modules : [];
+  const totalLessons = modulesList.reduce((acc, m) => {
+    if (!m) return acc;
+    const lessonsList = Array.isArray(m.lessons) ? m.lessons : [];
+    return acc + lessonsList.length;
+  }, 0);
+  const completedCount = Array.isArray(activeCourse.completedLessons) ? activeCourse.completedLessons.length : 0;
+  const progressPercent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
@@ -50,7 +63,7 @@ const CoursePage = () => {
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 rounded-full text-sm text-slate-300">
             <BookOpen size={16} className="text-purple-500" />
-            <span>{activeCourse.modules?.reduce((acc, m) => acc + m.lessons?.length, 0)} Lessons</span>
+            <span>{totalLessons} Lessons</span>
           </div>
           {activeCourse.tags?.map(tag => (
             <span key={tag} className="px-3 py-1 bg-blue-600/10 text-blue-400 border border-blue-600/20 rounded-full text-xs font-semibold">
@@ -58,6 +71,36 @@ const CoursePage = () => {
             </span>
           ))}
         </div>
+      </motion.div>
+
+      {/* Progress display card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="p-6 bg-slate-900/50 border border-slate-800 rounded-3xl mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-700/30 transition-all"
+      >
+        <div className="flex-1">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm font-semibold text-slate-400">Course Completion Progress</span>
+            <span className="text-sm font-bold text-blue-400">{progressPercent}% ({completedCount}/{totalLessons} Lessons)</span>
+          </div>
+          <div className="h-3 w-full bg-slate-950 rounded-full overflow-hidden border border-slate-850">
+            <div
+              className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 rounded-full transition-all duration-500"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+        </div>
+        {progressPercent === 100 && (
+          <button
+            onClick={() => setShowCertificate(true)}
+            className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold rounded-2xl shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap self-start md:self-center"
+          >
+            <Award size={18} />
+            View Certificate
+          </button>
+        )}
       </motion.div>
 
       <div className="space-y-8">
@@ -106,6 +149,15 @@ const CoursePage = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* Certificate Modal Overlay */}
+      {showCertificate && (
+        <CertificateModal
+          course={activeCourse}
+          userName={user?.name}
+          onClose={() => setShowCertificate(false)}
+        />
+      )}
     </div>
   );
 };

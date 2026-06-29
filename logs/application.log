@@ -760,3 +760,229 @@ java.net.SocketException: Connection reset
 2026-06-28T02:28:02.387+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Transferred 2 course(s) from guest 242764ec-9268-4de7-ac75-f010631e73a6 to user 1
 2026-06-28T02:28:03.226+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : Transferred 2 guest course(s) from 242764ec-9268-4de7-ac75-f010631e73a6 to user 1
 2026-06-28T02:28:03.227+05:30  INFO 3340 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
+2026-06-28T15:22:34.682+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 21.0.5 with PID 2392 (G:\Web Development\Projects\Text-to-Learn-Al course generator\target\classes started by Shubham in G:\Web Development\Projects\Text-to-Learn-Al course generator)
+2026-06-28T15:22:34.717+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T15:22:38.810+05:30  INFO 2392 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T15:22:39.725+05:30  INFO 2392 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 850 ms. Found 5 JPA repository interfaces.
+2026-06-28T15:22:40.616+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-06-28T15:22:40.641+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 78 properties registered.
+2026-06-28T15:22:42.775+05:30  INFO 2392 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T15:22:42.841+05:30  INFO 2392 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T15:22:42.842+05:30  INFO 2392 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-28T15:22:43.198+05:30  INFO 2392 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 8311 ms
+2026-06-28T15:22:43.590+05:30  INFO 2392 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T15:22:43.795+05:30  INFO 2392 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-28T15:22:45.437+05:30  INFO 2392 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T15:22:45.573+05:30  INFO 2392 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T15:23:10.285+05:30  INFO 2392 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43de9fc9
+2026-06-28T15:23:10.308+05:30  INFO 2392 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T15:23:15.056+05:30  WARN 2392 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-28T15:23:20.328+05:30  INFO 2392 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T15:23:25.897+05:30  INFO 2392 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T15:23:38.779+05:30  INFO 2392 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T15:23:39.031+05:30  INFO 2392 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-28T15:23:42.007+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-06-28T15:23:43.017+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-06-28T15:23:43.361+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-06-28T15:23:43.526+05:30  WARN 2392 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T15:23:43.610+05:30  WARN 2392 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f067c5bc-910b-4505-aa62-c4543c8d4dec
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-28T15:23:43.633+05:30  INFO 2392 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-28T15:23:47.193+05:30  INFO 2392 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T15:23:47.228+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 74.327 seconds (process running for 77.276)
+2026-06-28T15:23:47.245+05:30  INFO 2392 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-06-28T15:26:02.674+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T15:26:02.683+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T15:26:02.734+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 46 ms
+2026-06-28T15:29:46.297+05:30  WARN 2392 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@17c00890 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-28T15:30:19.035+05:30  WARN 2392 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6a8edcad (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-28T15:30:26.553+05:30  WARN 2392 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6d147094 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-28T15:51:09.366+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:c8f82e37-868e-471c-a205-07ecc359d51f, topic:'How to play cover drive'
+2026-06-28T15:51:09.368+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='How to play cover drive', guest id=c8f82e37-868e-471c-a205-07ecc359d51f
+2026-06-28T15:51:09.369+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'How to play cover drive'
+2026-06-28T15:52:00.257+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'How to play cover drive'. Response length: 6244 chars
+2026-06-28T15:52:00.413+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'how to play cover drive in cricket basics'
+2026-06-28T15:52:01.367+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'how to play cover drive in cricket basics': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:01.367+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cricket cover drive grip and stance techniques'
+2026-06-28T15:52:01.847+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cricket cover drive grip and stance techniques': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:01.848+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cover drive swing technique for beginners'
+2026-06-28T15:52:02.294+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cover drive swing technique for beginners': https://www.youtube.com/watch?v=dGxNawIGNO0
+2026-06-28T15:52:02.295+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cover drive footwork drills'
+2026-06-28T15:52:02.747+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cover drive footwork drills': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:02.747+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'adjusting stance for cover drive variations'
+2026-06-28T15:52:03.178+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'adjusting stance for cover drive variations': https://www.youtube.com/watch?v=ZDYj5UFLQZU
+2026-06-28T15:52:03.179+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'timing and balance in cover drive execution'
+2026-06-28T15:52:03.533+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'timing and balance in cover drive execution': https://www.youtube.com/watch?v=OvDQoOKLe0c
+2026-06-28T15:52:03.533+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'playing cover drive against spinners and pacers'
+2026-06-28T15:52:04.563+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'playing cover drive against spinners and pacers': https://www.youtube.com/watch?v=byoUZKTiWmk
+2026-06-28T15:52:04.564+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'perfecting follow-through in cover drive'
+2026-06-28T15:52:05.034+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'perfecting follow-through in cover drive': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:05.034+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cover drive in match scenarios cricket tactics'
+2026-06-28T15:52:05.516+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cover drive in match scenarios cricket tactics': https://www.youtube.com/watch?v=FEymlgZrrQQ
+2026-06-28T15:52:05.516+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cricket cover drive practice drills'
+2026-06-28T15:52:06.162+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cricket cover drive practice drills': https://www.youtube.com/watch?v=eTMgcFfczKA
+2026-06-28T15:52:06.163+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'target practice for cover drive accuracy'
+2026-06-28T15:52:06.796+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'target practice for cover drive accuracy': https://www.youtube.com/watch?v=I9z1ciU9hOs
+2026-06-28T15:52:06.797+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'analyzing cover drive by pro cricketers'
+2026-06-28T15:52:07.214+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'analyzing cover drive by pro cricketers': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:07.217+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'common cover drive mistakes in cricket'
+2026-06-28T15:52:07.599+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'common cover drive mistakes in cricket': https://www.youtube.com/watch?v=xzlubATqwaU
+2026-06-28T15:52:07.600+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'how to avoid overhitting in cover drive'
+2026-06-28T15:52:08.031+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'how to avoid overhitting in cover drive': https://www.youtube.com/watch?v=x_qhqQwETEI
+2026-06-28T15:52:08.032+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'correcting posture for cover drive in cricket'
+2026-06-28T15:52:08.398+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'correcting posture for cover drive in cricket': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:08.399+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cover drive in death overs cricket strategy'
+2026-06-28T15:52:08.768+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cover drive in death overs cricket strategy': https://www.youtube.com/watch?v=HlDVCiU2JWE
+2026-06-28T15:52:08.769+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'cover drive in limited overs batting strategies'
+2026-06-28T15:52:09.356+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'cover drive in limited overs batting strategies': https://www.youtube.com/watch?v=bLpYOUoZUk8
+2026-06-28T15:52:09.356+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'psychology of batting in cricket cover drive'
+2026-06-28T15:52:09.795+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'psychology of batting in cricket cover drive': https://www.youtube.com/watch?v=xIa3MO0yTbo
+2026-06-28T15:52:17.994+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'Mastering the Cover Drive: A Comprehensive Guide' saved for guest id: c8f82e37-868e-471c-a205-07ecc359d51f
+2026-06-28T15:53:25.612+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-06-28T15:53:25.613+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-06-28T15:53:26.366+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
+2026-06-28T15:53:26.561+05:30  WARN 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [119] milliseconds.
+2026-06-28T15:53:26.846+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Transferred 1 course(s) from guest c8f82e37-868e-471c-a205-07ecc359d51f to user 1
+2026-06-28T15:53:27.482+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : Transferred 1 guest course(s) from c8f82e37-868e-471c-a205-07ecc359d51f to user 1
+2026-06-28T15:53:27.482+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
+2026-06-28T15:58:08.210+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-6] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [g_state={"i_l":0,"i_ll":1782590726703,"i_b":"qEHzaJLJ7/+SBd4jA44l1v4RzWPVFWjqYP0Wd8/zwMk","i_e":{"enable_itp_optimization":24},"i_et":1782590726703};] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2026-06-28T15:58:30.440+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-06-28T15:58:30.440+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-06-28T15:58:31.555+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
+2026-06-28T15:58:31.916+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Transferred 1 course(s) from guest 325cc48a-728c-435c-88a9-4f82156cab72 to user 1
+2026-06-28T15:58:32.550+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.controllers.AuthController   : Transferred 1 guest course(s) from 325cc48a-728c-435c-88a9-4f82156cab72 to user 1
+2026-06-28T15:58:32.550+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
+2026-06-28T16:00:48.727+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/register — email: test@example.com
+2026-06-28T16:00:48.728+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registering new user with email: test@example.com
+2026-06-28T16:00:50.833+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User registered successfully with id: 2
+2026-06-28T16:00:51.332+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from 1f4b37b9-49d6-408b-8702-35662a72acbd to user 2
+2026-06-28T16:00:51.333+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : Registration successful for user id: 2
+2026-06-28T16:01:26.073+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — user:2, topic:'React Hooks'
+2026-06-28T16:01:26.079+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='React Hooks', user id=2
+2026-06-28T16:01:26.080+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'React Hooks'
+2026-06-28T16:01:48.422+05:30  WARN 2392 --- [Text-to-Learn] [reactor-http-nio-2] r.netty.http.client.HttpClientConnect    : [390393eb-2, L:/10.140.115.204:59431 - R:openrouter.ai/104.18.3.115:443] The connection observed an error
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T16:01:48.474+05:30 ERROR 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Course generation failed for topic: React Hooks] with root cause
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T16:22:43.230+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 2
+2026-06-28T16:23:06.373+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-06-28T16:23:06.374+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-06-28T16:23:09.557+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
+2026-06-28T16:23:09.559+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
+2026-06-28T17:33:08.007+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 1
+2026-06-28T17:34:44.949+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-06-28T17:34:44.950+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-06-28T17:34:46.872+05:30  WARN 2392 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login failed — incorrect password for email: shubham@texttolearn.com
+2026-06-28T17:36:41.476+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/register — email: shubham@texttolearn.com
+2026-06-28T17:36:41.476+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registering new user with email: shubham@texttolearn.com
+2026-06-28T17:36:41.989+05:30  WARN 2392 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registration failed — email already exists: shubham@texttolearn.com
+2026-06-28T17:37:11.388+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/register — email: testuser@texttolearn.com
+2026-06-28T17:37:11.389+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registering new user with email: testuser@texttolearn.com
+2026-06-28T17:37:13.356+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User registered successfully with id: 3
+2026-06-28T17:37:14.206+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from 63c06590-b58a-41b6-a723-3190396df878 to user 3
+2026-06-28T17:37:14.207+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : Registration successful for user id: 3
+2026-06-28T17:37:38.816+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — user:3, topic:'React Hooks'
+2026-06-28T17:37:38.817+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='React Hooks', user id=3
+2026-06-28T17:37:38.817+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'React Hooks'
+2026-06-28T17:38:05.817+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'React Hooks'. Response length: 4097 chars
+2026-06-28T17:38:05.978+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'What are React Hooks tutorial'
+2026-06-28T17:38:26.271+05:30  WARN 2392 --- [Text-to-Learn] [reactor-http-nio-3] r.netty.http.client.HttpClientConnect    : [ae180f12-19, L:/10.140.115.204:59439 - R:www.googleapis.com/216.239.34.223:443] The connection observed an error
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434) ~[na:na]
+	at io.netty.buffer.AdaptivePoolingAllocator$AdaptiveByteBuf.setBytes(AdaptivePoolingAllocator.java:1750) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1139) ~[netty-buffer-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:157) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.handle(AbstractNioChannel.java:445) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler$DefaultNioRegistration.handle(NioIoHandler.java:388) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKey(NioIoHandler.java:596) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeysOptimized(NioIoHandler.java:571) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.processSelectedKeys(NioIoHandler.java:512) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:484) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1195) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.9.Final.jar:4.2.9.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-06-28T17:38:26.293+05:30  WARN 2392 --- [Text-to-Learn] [reactor-http-nio-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube API call failed for query 'What are React Hooks tutorial': Connection reset. Skipping video.
+2026-06-28T17:38:26.294+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Rules of React Hooks explained'
+2026-06-28T17:38:28.086+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Rules of React Hooks explained': https://www.youtube.com/watch?v=LOH1l-MP_9k
+2026-06-28T17:38:28.087+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Why use React Hooks over class components'
+2026-06-28T17:38:28.685+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Why use React Hooks over class components': https://www.youtube.com/watch?v=wwl6iH5D0LU
+2026-06-28T17:38:28.685+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'useState hook React example'
+2026-06-28T17:38:29.183+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'useState hook React example': https://www.youtube.com/watch?v=V9i3cGD-mts
+2026-06-28T17:38:29.183+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'useEffect hook React tutorial'
+2026-06-28T17:38:29.672+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'useEffect hook React tutorial': https://www.youtube.com/watch?v=YxkcMszKEYY
+2026-06-28T17:38:29.673+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'useContext and useReducer hooks explained'
+2026-06-28T17:38:30.091+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'useContext and useReducer hooks explained': https://www.youtube.com/watch?v=BCD2irXaVoE
+2026-06-28T17:38:30.093+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Create custom hooks in React'
+2026-06-28T17:38:31.367+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Create custom hooks in React': https://www.youtube.com/watch?v=4fmYrIWl-4Q
+2026-06-28T17:38:31.368+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'useCallback and useMemo React hooks'
+2026-06-28T17:38:32.586+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'useCallback and useMemo React hooks': https://www.youtube.com/watch?v=MXs2qqWcGHo
+2026-06-28T17:38:32.586+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Debugging React Hooks with DevTools'
+2026-06-28T17:38:33.323+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Debugging React Hooks with DevTools': https://www.youtube.com/watch?v=l8knG0BPr-o
+2026-06-28T17:38:33.325+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'React Hooks todo app tutorial'
+2026-06-28T17:38:33.806+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'React Hooks todo app tutorial': https://www.youtube.com/watch?v=9wiWzu_tRB0
+2026-06-28T17:38:33.807+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Weather dashboard React Hooks project'
+2026-06-28T17:38:34.428+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Weather dashboard React Hooks project': https://www.youtube.com/watch?v=BCp_5PoKrvI
+2026-06-28T17:38:41.997+05:30  INFO 2392 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'Mastering React Hooks: A Comprehensive Guide' saved for user id: 3

@@ -25,7 +25,7 @@ const CourseGenerationLoader = () => {
   const ActiveIcon = LOADING_STEPS[stepIndex].icon;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 overflow-hidden">
       
       {/* ── Background Skeleton UI of Course Page ── */}
       <div className="absolute inset-0 max-w-5xl mx-auto px-6 py-12 pointer-events-none opacity-20 filter blur-[1px]">
@@ -92,35 +92,49 @@ const CourseGenerationLoader = () => {
 
         {/* Coffee Cup Steaming Animation */}
         <div className="relative w-24 h-24 mx-auto mb-6 flex items-center justify-center bg-slate-950/60 border border-slate-800 rounded-2xl shadow-inner">
-          <div className="absolute -top-1 flex gap-3 justify-center w-full">
-            {/* Steam trails */}
+          <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-10">
+            <defs>
+              <linearGradient id="steam-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="rgb(148, 163, 184)" stopOpacity="0.45" />
+                <stop offset="50%" stopColor="rgb(203, 213, 225)" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="rgb(241, 245, 249)" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* Steam trails: Wavy curves simulating natural rising smoke */}
             {[0, 1, 2].map((i) => {
-              const xRange = i === 0 ? [0, -3, 2, -2, 0] : i === 1 ? [0, 3, -1, 2, 0] : [0, -2, 3, -1, 0];
-              const yRange = [12, -8, -24, -40];
-              const scaleRange = [0.8, 1.2, 1.4, 0.9];
-              const opacityRange = [0, 0.7, 0.4, 0];
+              const paths = [
+                "M 32 60 C 37 45, 27 32, 32 18 C 37 5, 27 -8, 32 -22",
+                "M 48 60 C 43 45, 53 32, 48 18 C 43 5, 53 -8, 48 -22",
+                "M 64 60 C 69 45, 59 32, 64 18 C 69 5, 59 -8, 64 -22"
+              ];
+              const delay = i * 0.9;
               return (
-                <motion.div
+                <motion.path
                   key={i}
-                  initial={{ opacity: 0, y: 12, x: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: opacityRange, 
-                    y: yRange, 
-                    x: xRange, 
-                    scale: scaleRange 
+                  d={paths[i]}
+                  fill="none"
+                  stroke="url(#steam-grad)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  filter="blur(1px)"
+                  initial={{ opacity: 0, y: 15, scaleY: 0.8 }}
+                  animate={{
+                    opacity: [0, 0.8, 0.4, 0],
+                    y: [-5, -28, -50, -72],
+                    x: i === 0 ? [0, -4, 3, -2, 0] : i === 1 ? [0, 3, -3, 2, 0] : [0, -3, 4, -1, 0],
+                    scaleY: [0.8, 1.1, 1.2, 0.9],
                   }}
                   transition={{
-                    duration: 2.8,
+                    duration: 3.0,
                     repeat: Infinity,
-                    delay: i * 0.8,
+                    delay: delay,
                     ease: "easeInOut"
                   }}
-                  className="w-[3px] h-10 bg-gradient-to-t from-slate-400/40 via-slate-350/20 to-transparent rounded-full filter blur-[1.5px]"
                 />
               );
             })}
-          </div>
-          <Coffee className="w-10 h-10 text-slate-300 mt-2 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" />
+          </svg>
+          <Coffee className="w-10 h-10 text-slate-300 mt-2 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] z-10" />
         </div>
 
         {/* Main Loading Texts */}

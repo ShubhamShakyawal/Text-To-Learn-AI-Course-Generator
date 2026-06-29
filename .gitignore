@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 
 client/node_modules/
+/logs/
 
 ### STS ###
 .apt_generated

@@ -43,7 +43,7 @@ const Layout = () => {
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return <LoadingSpinner message="Checking authentication, please wait..." />;
 
   const showSidebar = isAuthenticated && location.pathname !== '/login';
 

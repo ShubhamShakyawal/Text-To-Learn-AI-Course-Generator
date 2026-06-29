@@ -130,7 +130,7 @@ const LessonPage = () => {
   };
 
   // Show loading only when course is still being fetched and we have nothing yet
-  if (isGenerating && !activeCourse) return <LoadingSpinner />;
+  if (isGenerating && !activeCourse) return <LoadingSpinner message="Loading lesson, please wait..." />;
   if (error) return <ErrorMessage message={error} />;
   if (!activeLesson) return (
     <div className="p-10 text-center text-slate-400">

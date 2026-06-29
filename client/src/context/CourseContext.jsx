@@ -10,18 +10,37 @@ export const CourseProvider = ({ children }) => {
   const [activeCourse, setActiveCourse] = useState(null);
   const [activeLesson, setActiveLesson] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isLoadingCourses, setIsLoadingCourses] = useState(true);
   const [error, setError] = useState(null);
+
+  // Helper to hydrate a course object with localStorage progress
+  const hydrateCourseProgress = (course) => {
+    if (!course) return null;
+    const progressKey = `progress_${course.id}`;
+    const saved = localStorage.getItem(progressKey);
+    const completedLessons = saved ? JSON.parse(saved) : [];
+    return {
+      ...course,
+      completedLessons: Array.isArray(completedLessons) ? completedLessons : []
+    };
+  };
 
   /**
    * Fetches the current user's (or guest's) courses from the backend.
    * Works for both authenticated users (uses JSESSIONID) and guests (uses GUEST_SESSION_ID).
    */
   const fetchUserCourses = async () => {
+    setIsLoadingCourses(true);
     try {
       const data = await api.getUserCourses();
-      setCourses(data);
+      const list = Array.isArray(data) ? data : [];
+      const hydrated = list.map(c => hydrateCourseProgress(c)).filter(Boolean);
+      setCourses(hydrated);
     } catch (err) {
       console.error('Failed to fetch courses:', err);
+      setCourses([]);
+    } finally {
+      setIsLoadingCourses(false);
     }
   };
 
@@ -41,8 +60,9 @@ export const CourseProvider = ({ children }) => {
     setError(null);
     try {
       const newCourse = await api.generateCourse(prompt);
-      setCourses((prev) => [newCourse, ...prev]);
-      return newCourse;
+      const hydrated = hydrateCourseProgress(newCourse);
+      setCourses((prev) => [hydrated, ...(Array.isArray(prev) ? prev : [])].filter(Boolean));
+      return hydrated;
     } catch (err) {
       setError('Failed to generate course. Please try again.');
       throw err;
@@ -53,25 +73,36 @@ export const CourseProvider = ({ children }) => {
 
   const updateProgress = async (courseId, lessonId, completed) => {
     try {
-      setCourses(prev => prev.map(course => {
-        if (course.id === courseId) {
-          return {
-            ...course,
-            completedLessons: completed
-              ? [...(course.completedLessons || []), lessonId]
-              : (course.completedLessons || []).filter(id => id !== lessonId)
-          };
-        }
-        return course;
-      }));
+      const progressKey = `progress_${courseId}`;
+      const saved = localStorage.getItem(progressKey);
+      let currentProgress = saved ? JSON.parse(saved) : [];
+      if (!Array.isArray(currentProgress)) currentProgress = [];
+
+      if (completed) {
+        currentProgress = [...new Set([...currentProgress, lessonId])];
+      } else {
+        currentProgress = currentProgress.filter(id => id !== lessonId);
+      }
+      localStorage.setItem(progressKey, JSON.stringify(currentProgress));
+
+      setCourses(prev => {
+        const list = Array.isArray(prev) ? prev : [];
+        return list.map(course => {
+          if (String(course.id) === String(courseId)) {
+            return {
+              ...course,
+              completedLessons: currentProgress
+            };
+          }
+          return course;
+        });
+      });
 
       setActiveCourse(prev => {
-        if (prev && prev.id === courseId) {
+        if (prev && String(prev.id) === String(courseId)) {
           return {
             ...prev,
-            completedLessons: completed
-              ? [...(prev.completedLessons || []), lessonId]
-              : (prev.completedLessons || []).filter(id => id !== lessonId)
+            completedLessons: currentProgress
           };
         }
         return prev;
@@ -88,8 +119,9 @@ export const CourseProvider = ({ children }) => {
     setError(null);
     try {
       const data = await api.getCourse(id);
-      setActiveCourse(data);
-      return data;
+      const hydrated = hydrateCourseProgress(data);
+      setActiveCourse(hydrated);
+      return hydrated;
     } catch (err) {
       setError('Failed to fetch course details.');
       throw err;
@@ -116,10 +148,11 @@ export const CourseProvider = ({ children }) => {
   return (
     <CourseContext.Provider
       value={{
-        courses,
+        courses: Array.isArray(courses) ? courses : [],
         activeCourse,
         activeLesson,
         isGenerating,
+        isLoadingCourses,
         error,
         generateCourse,
         fetchCourse,
