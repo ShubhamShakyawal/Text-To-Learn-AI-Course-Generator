@@ -45,6 +45,10 @@ public class AiService {
     @Value("${spring.ai.openrouter.model-name}")
     private String modelName;
 
+    /** Application URL used as HTTP-Referer header for tracking in OpenRouter. */
+    @Value("${app.url}")
+    private String appUrl;
+
     /**
      * Sends a structured prompt to the OpenRouter chat completions API and returns
      * the raw JSON course content produced by the AI model.
@@ -118,7 +122,7 @@ public class AiService {
         return openRouterClient.get()
                 .uri("/chat/completions")
                 .header("Authorization", "Bearer " + apiKey)   // API key authentication
-                .header("HTTP-Referer", "http://localhost:8080") // recommended by OpenRouter for tracking
+                .header("HTTP-Referer", appUrl) // recommended by OpenRouter for tracking
                 .header("X-Title", "Course Generator")           // app identifier shown in OpenRouter dashboard
                 .header("Content-Type", "application/json")
                 .retrieve()
@@ -139,7 +143,7 @@ public class AiService {
             return openRouterClient.post()
                     .uri("/chat/completions")
                     .header("Authorization", "Bearer " + apiKey)   // API key authentication
-                    .header("HTTP-Referer", "http://localhost:8080") // recommended by OpenRouter for tracking
+                    .header("HTTP-Referer", appUrl) // recommended by OpenRouter for tracking
                     .header("X-Title", "Course Generator")           // app identifier shown in OpenRouter dashboard
                     .header("Content-Type", "application/json")
                     .bodyValue(request)

@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 
 client/node_modules/
+client/dist
 /logs/
 
 ### STS ###

@@ -2,6 +2,7 @@ package com.example.backend.Text.to.Learn.configuration;
 
 import com.example.backend.Text.to.Learn.dto.UserDTO;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,9 @@ import java.util.List;
 @EnableWebSecurity
 @EnableScheduling
 public class SecurityConfig {
+
+    @Value("${app.cors.allowed-origins}")
+    private List<String> allowedOrigins;
 
     /**
      * Provides a BCrypt password encoder bean used by {@link com.example.backend.Text.to.Learn.services.impl.AuthServiceImpl}.
@@ -130,11 +134,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allowed origins — add your production domain here when deploying
-        config.setAllowedOrigins(List.of(
-                "http://localhost:5173",
-                "http://localhost:3000"
-        ));
+        // Allowed origins — loaded dynamically from the environment
+        config.setAllowedOrigins(allowedOrigins);
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
