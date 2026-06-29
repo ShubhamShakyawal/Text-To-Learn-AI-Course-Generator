@@ -1,19 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useCourse } from '../context/CourseContext';
 import LessonRenderer from '../components/LessonRenderer';
 import LessonPDFExporter from '../components/LessonPDFExporter';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
-import * as api from '../utils/api';
 import { motion } from 'framer-motion';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Volume2, 
-  Target, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Target,
   CheckCircle2,
-  Loader2
 } from 'lucide-react';
 
 const getEmbedUrl = (url) => {
@@ -35,13 +32,15 @@ const LessonPage = () => {
   const { courseId, moduleIndex, lessonIndex } = useParams();
   const navigate = useNavigate();
   const { activeCourse, fetchCourse, setActiveLesson, activeLesson, updateProgress, isGenerating, error } = useCourse();
-  const pdfRef = useRef();
-  const [audioLoading, setAudioLoading] = useState(false);
-  const [audioUrl, setAudioUrl] = useState(null);
-  const audioRef = useRef(new Audio());
 
   const mIdx = parseInt(moduleIndex, 10);
   const lIdx = parseInt(lessonIndex, 10);
+
+  // Compute lesson progress % for the current course
+  const modulesList = Array.isArray(activeCourse?.modules) ? activeCourse.modules : [];
+  const totalLessons = modulesList.reduce((acc, m) => acc + (Array.isArray(m?.lessons) ? m.lessons.length : 0), 0);
+  const completedCount = Array.isArray(activeCourse?.completedLessons) ? activeCourse.completedLessons.length : 0;
+  const progressPercent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
   // Load the course if it isn't already in context (or if it's a different course).
   // FIX: compare as strings to avoid Number vs String type mismatch from URL params.
@@ -65,33 +64,9 @@ const LessonPage = () => {
         setActiveLesson(lesson);
       }
     }
-
-    // Pause any playing audio when navigating between lessons
-    return () => {
-      audioRef.current.pause();
-      setAudioUrl(null);
-    };
   }, [activeCourse, courseId, mIdx, lIdx]);
 
-  const handleHinglishAudio = async () => {
-    if (audioUrl) {
-      audioRef.current.play();
-      return;
-    }
 
-    setAudioLoading(true);
-    try {
-      const data = await api.getHinglishAudio(activeLesson.id);
-      const url = data.audioUrl || data;
-      setAudioUrl(url);
-      audioRef.current.src = url;
-      audioRef.current.play();
-    } catch (err) {
-      console.error('Failed to get Hinglish audio:', err);
-    } finally {
-      setAudioLoading(false);
-    }
-  };
 
   const goToNext = async () => {
     if (activeLesson) {
@@ -151,19 +126,20 @@ const LessonPage = () => {
         </Link>
         
         <div className="flex items-center gap-3">
-          <button
-            onClick={handleHinglishAudio}
-            disabled={audioLoading}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-600/10 hover:bg-purple-600/20 text-purple-400 rounded-lg border border-purple-500/20 transition-all"
-          >
-            {audioLoading ? <Loader2 size={18} className="animate-spin" /> : <Volume2 size={18} />}
-            <span>Hear in Hinglish</span>
-          </button>
-          
-          <LessonPDFExporter 
-            ref={pdfRef} 
-            lesson={activeLesson} 
-            content={activeLesson.content || []} 
+          {/* Progress pill */}
+          <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 rounded-lg">
+            <div className="w-20 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full transition-all duration-500"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+            <span className="text-xs font-bold text-slate-400 tabular-nums">{progressPercent}%</span>
+          </div>
+
+          <LessonPDFExporter
+            lesson={activeLesson}
+            content={activeLesson.content || []}
           />
         </div>
       </div>

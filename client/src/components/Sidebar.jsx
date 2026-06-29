@@ -225,16 +225,20 @@ const Sidebar = () => {
                         ${!isOpen ? 'justify-center' : ''}
                       `}
                     >
-                      <BookOpen size={17} className="flex-shrink-0" />
-                      {isOpen && (
-                        <div className="flex-1 flex items-center justify-between min-w-0">
-                          <span className="truncate text-xs mr-2">{course.title}</span>
-                          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded flex-shrink-0 ${
-                            isActive ? 'bg-blue-600/20 text-blue-400' : 'bg-slate-800/60 text-slate-500'
-                          }`}>
-                            {calculateProgress(course)}%
-                          </span>
-                        </div>
+                      {({ isActive }) => (
+                        <>
+                          <BookOpen size={17} className="flex-shrink-0" />
+                          {isOpen && (
+                            <div className="flex-1 flex items-center justify-between min-w-0">
+                              <span className="truncate text-xs mr-2">{course.title}</span>
+                              <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded flex-shrink-0 ${
+                                isActive ? 'bg-blue-600/20 text-blue-400' : 'bg-slate-800/60 text-slate-500'
+                              }`}>
+                                {calculateProgress(course)}%
+                              </span>
+                            </div>
+                          )}
+                        </>
                       )}
                     </NavLink>
                   </Tooltip>
