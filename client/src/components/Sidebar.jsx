@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import {
   Home,
@@ -20,16 +20,29 @@ import Tooltip from './Tooltip';
 // ── How many courses to show before paginating ──
 const PAGE_SIZE = 5;
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+const Sidebar = ({ isOpen: propIsOpen, setIsOpen: propSetIsOpen }) => {
+  const [localIsOpen, setLocalIsOpen] = useState(true);
   const [search, setSearch]   = useState('');
   const [page, setPage]       = useState(0);
+
+  const isOpen = propIsOpen !== undefined ? propIsOpen : localIsOpen;
+  const setIsOpen = propSetIsOpen !== undefined ? propSetIsOpen : setLocalIsOpen;
+
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const { isAuthenticated, user, login, logout } = useAuth();
   const { courses, isLoadingCourses } = useCourse();
 
   const toggleSidebar = () => {
-    setIsOpen((o) => !o);
+    setIsOpen(!isOpen);
     if (isOpen) setSearch(''); // clear search on collapse
   };
 
@@ -71,8 +84,16 @@ const Sidebar = () => {
   };
 
   const sidebarVariants = {
-    open:   { width: 300, transition: { duration: 0.3, ease: 'easeInOut' } },
-    closed: { width: 72,  transition: { duration: 0.3, ease: 'easeInOut' } },
+    open: {
+      width: isMobile ? 280 : 300,
+      x: 0,
+      transition: { duration: 0.3, ease: 'easeInOut' }
+    },
+    closed: {
+      width: isMobile ? 0 : 72,
+      x: isMobile ? -280 : 0,
+      transition: { duration: 0.3, ease: 'easeInOut' }
+    }
   };
 
   return (
@@ -80,24 +101,26 @@ const Sidebar = () => {
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-40 md:hidden"
-          onClick={toggleSidebar}
+          className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Sidebar Container */}
       <motion.aside
-        initial="open"
+        initial={isMobile ? 'closed' : 'open'}
         animate={isOpen ? 'open' : 'closed'}
         variants={sidebarVariants}
-        className="relative z-50 h-full bg-slate-900 border-r border-slate-800 flex flex-col shadow-2xl"
+        className={`fixed lg:relative z-50 h-full bg-slate-900 flex flex-col shadow-2xl overflow-hidden ${
+          isOpen ? 'border-r border-slate-800' : 'lg:border-r lg:border-slate-800'
+        }`}
       >
         {/* ── Header ── */}
         <div className="h-14 flex items-center border-b border-slate-800/50 px-3 gap-2">
           {isOpen ? (
             /* ── Expanded: logo + title (flex-1) + toggle pinned right ── */
             <>
-              <Link to="/" className="flex items-center gap-2.5 flex-1 min-w-0 overflow-hidden">
+              <Link to="/" onClick={() => isMobile && setIsOpen(false)} className="flex items-center gap-2.5 flex-1 min-w-0 overflow-hidden">
                 <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-600/30">
                   <GraduationCap className="text-white w-4 h-4" />
                 </div>
@@ -144,6 +167,7 @@ const Sidebar = () => {
             <NavLink
               to="/"
               end
+              onClick={() => isMobile && setIsOpen(false)}
               className={({ isActive }) => `
                 flex items-center gap-4 px-3 py-3 rounded-xl transition-all duration-200 w-full
                 ${isActive ? 'bg-blue-600/10 text-blue-400' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'}
@@ -219,6 +243,7 @@ const Sidebar = () => {
                   <Tooltip key={course.id} label={course.title} disabled={isOpen}>
                     <NavLink
                       to={`/course/${course.id}`}
+                      onClick={() => isMobile && setIsOpen(false)}
                       className={({ isActive }) => `
                         flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all w-full
                         ${isActive ? 'bg-slate-800 text-blue-400' : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'}
@@ -308,7 +333,7 @@ const Sidebar = () => {
               {/* Logout */}
               <Tooltip label="Logout" disabled={isOpen}>
                 <button
-                  onClick={logout}
+                  onClick={() => { logout(); if (isMobile) setIsOpen(false); }}
                   className={`flex items-center gap-4 px-3 py-3 w-full rounded-xl text-red-400 hover:bg-red-500/10 transition-colors ${
                     !isOpen ? 'justify-center' : ''
                   }`}
@@ -322,7 +347,7 @@ const Sidebar = () => {
             /* Login */
             <Tooltip label="Sign in to save your courses" disabled={isOpen}>
               <button
-                onClick={login}
+                onClick={() => { login(); if (isMobile) setIsOpen(false); }}
                 className={`flex items-center gap-4 px-3 py-3 w-full rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition-colors ${
                   !isOpen ? 'justify-center' : ''
                 }`}

@@ -203,11 +203,15 @@ public class AuthController {
         } catch (Exception e) {
             log.warn("Guest course transfer failed: {}", e.getMessage());
         }
-        // Clear the guest cookie in the browser
-        Cookie clear = new Cookie(GuestSessionFilter.GUEST_COOKIE_NAME, "");
-        clear.setMaxAge(0);
-        clear.setPath("/");
-        clear.setHttpOnly(true);
-        response.addCookie(clear);
+        // Clear the guest cookie in the browser using ResponseCookie for secure cross-origin compliance
+        boolean isSecure = request.isSecure() || "https".equalsIgnoreCase(request.getHeader("X-Forwarded-Proto"));
+        org.springframework.http.ResponseCookie responseCookie = org.springframework.http.ResponseCookie.from(GuestSessionFilter.GUEST_COOKIE_NAME, "")
+                .httpOnly(true)
+                .maxAge(0)
+                .path("/")
+                .sameSite(isSecure ? "None" : "Lax")
+                .secure(isSecure)
+                .build();
+        response.addHeader(org.springframework.http.HttpHeaders.SET_COOKIE, responseCookie.toString());
     }
 }

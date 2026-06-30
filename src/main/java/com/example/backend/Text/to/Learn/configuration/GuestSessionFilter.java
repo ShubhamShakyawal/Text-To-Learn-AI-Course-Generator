@@ -71,13 +71,15 @@ public class GuestSessionFilter extends OncePerRequestFilter {
                                     .build()
                     );
 
-                    Cookie cookie = new Cookie(GUEST_COOKIE_NAME, newGuestId);
-                    cookie.setHttpOnly(true);
-                    cookie.setMaxAge(GUEST_EXPIRY_SECONDS);
-                    cookie.setPath("/");
-                    // SameSite=Lax is enforced globally via application.properties
-                    // cookie.setSecure(true); // enable when serving over HTTPS
-                    response.addCookie(cookie);
+                    boolean isSecure = request.isSecure() || "https".equalsIgnoreCase(request.getHeader("X-Forwarded-Proto"));
+                    org.springframework.http.ResponseCookie responseCookie = org.springframework.http.ResponseCookie.from(GUEST_COOKIE_NAME, newGuestId)
+                            .httpOnly(true)
+                            .maxAge(GUEST_EXPIRY_SECONDS)
+                            .path("/")
+                            .sameSite(isSecure ? "None" : "Lax")
+                            .secure(isSecure)
+                            .build();
+                    response.addHeader(org.springframework.http.HttpHeaders.SET_COOKIE, responseCookie.toString());
                     request.setAttribute(GUEST_COOKIE_NAME, newGuestId);
 
                     log.debug("Created guest session: {}", newGuestId);

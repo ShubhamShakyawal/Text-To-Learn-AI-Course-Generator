@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useCourse } from '../context/CourseContext';
 import { useAuth } from '../hooks/useAuth';
 import PromptForm from '../components/PromptForm';
@@ -157,10 +157,33 @@ const HomePage = () => {
   } = useCourse();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [localError, setLocalError] = useState(null);
 
   useEffect(() => {
     if (isAuthenticated) fetchUserCourses();
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (location.state?.error) {
+      setLocalError(location.state.error);
+      // Clear history state to avoid showing it again on page reloads
+      navigate(location.pathname + location.hash, { replace: true, state: {} });
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (location.hash === '#my-courses') {
+      const el = document.getElementById('my-courses');
+      if (el) {
+        // Use a tiny timeout to ensure DOM render has completed
+        const timer = setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [location, courses, isLoadingCourses]);
 
   const handleGenerate = async (prompt) => {
     try {
@@ -178,6 +201,11 @@ const HomePage = () => {
       {/* ── Hero / Prompt ── */}
       <section className={`pt-20 pb-24 ${!isAuthenticated ? 'bg-gradient-to-b from-slate-900 to-slate-950' : 'bg-slate-900/50'} border-b border-slate-800`}>
         <div className="max-w-7xl mx-auto px-6">
+          {localError && (
+            <div className="mb-6">
+              <ErrorMessage message={localError} onClose={() => setLocalError(null)} />
+            </div>
+          )}
           <PromptForm onGenerate={handleGenerate} isGenerating={isGenerating} />
           <ErrorMessage message={error} />
 
@@ -205,7 +233,7 @@ const HomePage = () => {
         {isAuthenticated ? (
           <>
             {/* Header row */}
-            <div className="flex items-center justify-between mb-6">
+            <div id="my-courses" className="flex items-center justify-between mb-6 scroll-mt-20">
               <h2 className="text-2xl font-bold text-white">Your Courses</h2>
               <span className="text-slate-500 text-sm font-medium">
                 {courses.length} {courses.length === 1 ? 'course' : 'courses'} generated

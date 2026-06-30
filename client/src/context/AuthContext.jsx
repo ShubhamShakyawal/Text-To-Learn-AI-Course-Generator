@@ -15,8 +15,21 @@ export const AuthContext = createContext();
  * - On logout, calls POST /api/auth/logout to invalidate the server session.
  */
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    try {
+      return !!localStorage.getItem('user');
+    } catch {
+      return false;
+    }
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null); // 'google' or 'email'
@@ -31,9 +44,16 @@ export const AuthProvider = ({ children }) => {
         if (serverUser) {
           setUser(serverUser);
           setIsAuthenticated(true);
+          localStorage.setItem('user', JSON.stringify(serverUser));
+        } else {
+          // If server says no session, clear stale localStorage
+          setUser(null);
+          setIsAuthenticated(false);
+          localStorage.removeItem('user');
         }
       } catch (err) {
         console.error('Session validation failed:', err);
+        // Do not automatically log out on intermittent network errors to prevent poor UX
       } finally {
         setIsLoading(false);
       }
@@ -59,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   /**
    * Called by AuthModal after a successful register/login/google API call.
-   * Stores the returned UserDTO in React state only — no localStorage.
+   * Stores the returned UserDTO in React state and localStorage.
    * Fires 'auth:login' so CourseContext refreshes and picks up transferred guest courses.
    *
    * @param {UserDTO} userData - the user object returned by the backend
@@ -67,13 +87,18 @@ export const AuthProvider = ({ children }) => {
   const loginUser = (userData) => {
     setUser(userData);
     setIsAuthenticated(true);
+    try {
+      localStorage.setItem('user', JSON.stringify(userData));
+    } catch (err) {
+      console.warn('Failed to save user to localStorage:', err);
+    }
     closeModal();
     // Signal CourseContext to re-fetch (picks up transferred guest courses)
     window.dispatchEvent(new Event('auth:login'));
   };
 
   /**
-   * Logs out by invalidating the server session, then clears React state.
+   * Logs out by invalidating the server session, then clears React state and localStorage.
    */
   const logout = async () => {
     try {
@@ -84,6 +109,11 @@ export const AuthProvider = ({ children }) => {
     }
     setUser(null);
     setIsAuthenticated(false);
+    try {
+      localStorage.removeItem('user');
+    } catch (err) {
+      console.warn('Failed to remove user from localStorage:', err);
+    }
     closeModal();
     navigate('/');
   };

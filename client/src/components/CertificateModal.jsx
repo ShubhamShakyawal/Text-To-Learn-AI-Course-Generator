@@ -85,8 +85,15 @@ const CertificateModal = ({ course, userName, onClose }) => {
   });
 
   return (
-    <div className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 overflow-y-auto">
-      <div className="relative max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl flex flex-col items-center">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[120] overflow-y-auto bg-slate-950/80 backdrop-blur-md p-4"
+    >
+      <div className="min-h-full flex items-center justify-center">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="relative max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl flex flex-col items-center"
+        >
 
         {/* Close */}
         <button
@@ -226,6 +233,7 @@ const CertificateModal = ({ course, userName, onClose }) => {
             </>
           )}
         </button>
+      </div>
       </div>
     </div>
   );

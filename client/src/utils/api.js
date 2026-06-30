@@ -1,6 +1,19 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+const getApiUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && envUrl.startsWith('http')) {
+    return envUrl;
+  }
+  // If we are on localhost, use the relative proxy path /api or fallback
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return envUrl || '/api';
+  }
+  // Fallback to production backend URL when deployed
+  return 'https://text-to-learn-ai-course-generator-production.up.railway.app/api';
+};
+
+const API_URL = getApiUrl();
 
 /**
  * Axios instance with session cookie support.

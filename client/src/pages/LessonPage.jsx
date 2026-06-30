@@ -46,8 +46,12 @@ const LessonPage = () => {
   // FIX: compare as strings to avoid Number vs String type mismatch from URL params.
   useEffect(() => {
     const load = async () => {
-      if (!activeCourse || String(activeCourse.id) !== String(courseId)) {
-        await fetchCourse(courseId);
+      try {
+        if (!activeCourse || String(activeCourse.id) !== String(courseId)) {
+          await fetchCourse(courseId);
+        }
+      } catch (err) {
+        navigate('/#my-courses', { state: { error: 'Invalid course ID or you do not have permission to access it.' } });
       }
     };
     load();

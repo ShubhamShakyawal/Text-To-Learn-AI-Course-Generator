@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useCourse } from '../context/CourseContext';
 import { useAuth } from '../hooks/useAuth';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -13,12 +13,19 @@ const CoursePage = () => {
   const { activeCourse, fetchCourse, isGenerating, error } = useCourse();
   const { user } = useAuth();
   const [showCertificate, setShowCertificate] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Always fetch when courseId changes; fetchCourse updates activeCourse in context
-    if (!activeCourse || String(activeCourse.id) !== String(courseId)) {
-      fetchCourse(courseId);
-    }
+    const load = async () => {
+      try {
+        if (!activeCourse || String(activeCourse.id) !== String(courseId)) {
+          await fetchCourse(courseId);
+        }
+      } catch (err) {
+        navigate('/#my-courses', { state: { error: 'Invalid course ID or you do not have permission to access it.' } });
+      }
+    };
+    load();
   }, [courseId]);
 
   if (isGenerating && !activeCourse) return <LoadingSpinner message="Loading your course, please wait..." />;

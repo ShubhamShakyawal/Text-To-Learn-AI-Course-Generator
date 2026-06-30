@@ -66,7 +66,7 @@ const PromptForm = ({ onGenerate, isGenerating }) => {
 
       <form onSubmit={handleSubmit} className="relative group">
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-        <div className={`relative flex items-center bg-slate-900 rounded-2xl overflow-hidden border shadow-2xl transition-colors ${
+        <div className={`relative flex flex-col sm:flex-row items-stretch sm:items-center bg-slate-900 rounded-2xl overflow-hidden border shadow-2xl transition-colors ${
           validationError ? 'border-red-500/60' : 'border-slate-800'
         }`}>
           <input
@@ -74,14 +74,14 @@ const PromptForm = ({ onGenerate, isGenerating }) => {
             value={prompt}
             onChange={handleChange}
             placeholder="e.g. Master React Hooks from scratch..."
-            className="flex-1 bg-transparent px-6 py-5 text-lg text-slate-100 placeholder-slate-500 focus:outline-none"
+            className="flex-1 bg-transparent px-4 sm:px-6 py-3 sm:py-5 text-sm sm:text-lg text-slate-100 placeholder-slate-500 focus:outline-none min-w-0"
             disabled={isGenerating}
             maxLength={200}
           />
           <button
             type="submit"
             disabled={isGenerating || !prompt.trim()}
-            className="flex items-center gap-2 px-8 py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center gap-2 px-4 sm:px-8 py-3 sm:py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-sm sm:text-base font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed border-t sm:border-t-0 sm:border-l border-slate-800"
           >
             {isGenerating ? (
               'Generating...'
