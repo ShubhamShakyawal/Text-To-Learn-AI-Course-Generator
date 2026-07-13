@@ -31,6 +31,19 @@ public class SessionCookieSameSiteFilter extends OncePerRequestFilter {
 
         HttpServletResponse wrappedResponse = new HttpServletResponseWrapper(response) {
             @Override
+            public void addCookie(jakarta.servlet.http.Cookie cookie) {
+                if (cookie == null) return;
+                org.springframework.http.ResponseCookie responseCookie = org.springframework.http.ResponseCookie.from(cookie.getName(), cookie.getValue())
+                        .path(cookie.getPath() != null ? cookie.getPath() : "/")
+                        .domain(cookie.getDomain())
+                        .maxAge(cookie.getMaxAge())
+                        .secure(cookie.getSecure())
+                        .httpOnly(cookie.isHttpOnly())
+                        .build();
+                this.addHeader("Set-Cookie", responseCookie.toString());
+            }
+
+            @Override
             public void addHeader(String name, String value) {
                 if ("Set-Cookie".equalsIgnoreCase(name)) {
                     super.addHeader(name, rewriteCookie(value, request));

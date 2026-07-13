@@ -2,14 +2,12 @@ import axios from 'axios';
 
 const getApiUrl = () => {
   const envUrl = import.meta.env.VITE_API_URL;
-  if (envUrl && envUrl.startsWith('http')) {
+  if (envUrl) {
     return envUrl;
   }
-  // If we are on localhost, use the relative proxy path /api or fallback
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return envUrl || '/api';
+    return '/api';
   }
-  // Fallback to production backend URL when deployed
   return 'https://text-to-learn-ai-course-generator-production.up.railway.app/api';
 };
 
@@ -68,12 +66,8 @@ export const logout = async () => {
  * @returns {Promise<UserDTO|null>}
  */
 export const getMe = async () => {
-  try {
-    const response = await api.get('/auth/me');
-    return response.data;
-  } catch {
-    return null;
-  }
+  const response = await api.get('/auth/me');
+  return response.data;
 };
 
 // ── Course API ────────────────────────────────────────────────────────────────

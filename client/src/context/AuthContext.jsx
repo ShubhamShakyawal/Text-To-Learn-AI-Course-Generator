@@ -40,20 +40,26 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        const serverUser = await getMe(); // returns UserDTO or null
+        const serverUser = await getMe(); // returns UserDTO
         if (serverUser) {
           setUser(serverUser);
           setIsAuthenticated(true);
           localStorage.setItem('user', JSON.stringify(serverUser));
         } else {
-          // If server says no session, clear stale localStorage
           setUser(null);
           setIsAuthenticated(false);
           localStorage.removeItem('user');
         }
       } catch (err) {
         console.error('Session validation failed:', err);
-        // Do not automatically log out on intermittent network errors to prevent poor UX
+        // Only clear the session if the server explicitly responds with 401 or 403
+        if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+          setUser(null);
+          setIsAuthenticated(false);
+          localStorage.removeItem('user');
+        }
+        // Otherwise (network timeouts, server 5xx restarts, database reconnecting), 
+        // we keep the optimistic localStorage user to avoid logging them out.
       } finally {
         setIsLoading(false);
       }
