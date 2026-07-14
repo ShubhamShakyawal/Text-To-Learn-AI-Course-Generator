@@ -46,6 +46,17 @@ const Sidebar = ({ isOpen: propIsOpen, setIsOpen: propSetIsOpen }) => {
     if (isOpen) setSearch(''); // clear search on collapse
   };
 
+  // Collapse sidebar and clear search on logout
+  useEffect(() => {
+    const onLogout = () => {
+      setIsOpen(false);
+      setSearch('');
+      setPage(0);
+    };
+    window.addEventListener('auth:logout', onLogout);
+    return () => window.removeEventListener('auth:logout', onLogout);
+  }, [setIsOpen]);
+
   // Calculate course completion progress %
   const calculateProgress = (course) => {
     if (!course) return 0;

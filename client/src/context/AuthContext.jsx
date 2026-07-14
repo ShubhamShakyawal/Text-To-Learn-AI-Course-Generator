@@ -120,6 +120,8 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.warn('Failed to remove user from localStorage:', err);
     }
+    // Signal CourseContext to clear cached courses and Sidebar to collapse
+    window.dispatchEvent(new Event('auth:logout'));
     closeModal();
     navigate('/');
   };

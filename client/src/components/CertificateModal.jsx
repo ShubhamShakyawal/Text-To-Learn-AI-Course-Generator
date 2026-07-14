@@ -32,38 +32,57 @@ const CertificateModal = ({ course, userName, onClose }) => {
     if (!certRef.current) return;
     setIsExporting(true);
     try {
-      // Temporarily override gradient-text styles with solid colours so
-      // html2canvas (which cannot render -webkit-background-clip) captures them.
-      const gradients = certRef.current.querySelectorAll('[data-pdf-color]');
+      const el = certRef.current;
+
+      // ── 1. Reset CSS transform so html2canvas captures the element at
+      //        full resolution (transforms break canvas rendering).
+      const prevTransform = el.style.transform;
+      const prevTransformOrigin = el.style.transformOrigin;
+      el.style.transform = 'scale(1)';
+      el.style.transformOrigin = 'top left';
+
+      // ── 2. Swap gradient-text styles → solid colours so html2canvas
+      //        (which cannot render -webkit-background-clip) captures them.
+      const gradients = el.querySelectorAll('[data-pdf-color]');
       const origStyles = [];
-      gradients.forEach((el) => {
+      gradients.forEach((node) => {
         origStyles.push({
-          el,
-          color: el.style.color,
-          background: el.style.background,
-          webkitBackgroundClip: el.style.webkitBackgroundClip,
-          webkitTextFillColor: el.style.webkitTextFillColor,
+          node,
+          color: node.style.color,
+          background: node.style.background,
+          backgroundImage: node.style.backgroundImage,
+          webkitBackgroundClip: node.style.webkitBackgroundClip,
+          webkitTextFillColor: node.style.webkitTextFillColor,
         });
-        el.style.background = 'none';
-        el.style.webkitBackgroundClip = 'unset';
-        el.style.webkitTextFillColor = 'unset';
-        el.style.color = el.dataset.pdfColor;
+        node.style.backgroundImage = 'none';
+        node.style.background = 'none';
+        node.style.webkitBackgroundClip = 'unset';
+        node.style.webkitTextFillColor = 'unset';
+        node.style.color = node.dataset.pdfColor;
       });
 
-      const canvas = await html2canvas(certRef.current, {
+      const canvas = await html2canvas(el, {
         scale: 2,
         useCORS: true,
         backgroundColor: '#090d16',
         logging: false,
+        // Capture the element at its natural (un-transformed) size
+        width: CERT_W,
+        height: CERT_H,
       });
 
-      // Restore gradient styles
-      origStyles.forEach(({ el, color, background, webkitBackgroundClip, webkitTextFillColor }) => {
-        el.style.color = color;
-        el.style.background = background;
-        el.style.webkitBackgroundClip = webkitBackgroundClip;
-        el.style.webkitTextFillColor = webkitTextFillColor;
+      // ── 3. Restore gradient styles
+      origStyles.forEach(({ node, color, background, backgroundImage, webkitBackgroundClip, webkitTextFillColor }) => {
+        node.style.color = color;
+        node.style.background = background;
+        node.style.backgroundImage = backgroundImage;
+        node.style.webkitBackgroundClip = webkitBackgroundClip;
+        node.style.webkitTextFillColor = webkitTextFillColor;
       });
+
+      // ── 4. Restore transform
+      el.style.transform = prevTransform;
+      el.style.transformOrigin = prevTransformOrigin;
 
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('l', 'mm', 'a4');
@@ -73,10 +92,16 @@ const CertificateModal = ({ course, userName, onClose }) => {
       pdf.save(`${(course.title || 'course').replace(/\s+/g, '_')}_Certificate.pdf`);
     } catch (err) {
       console.error('Failed to export certificate PDF:', err);
+      // Attempt to restore transform even on error
+      if (certRef.current) {
+        certRef.current.style.transform = `scale(${scale})`;
+        certRef.current.style.transformOrigin = 'top left';
+      }
     } finally {
       setIsExporting(false);
     }
   };
+
 
   const currentDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',

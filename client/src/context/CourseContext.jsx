@@ -5,12 +5,61 @@ const CourseContext = createContext();
 
 export const useCourse = () => useContext(CourseContext);
 
+// ── Cache helpers ──────────────────────────────────────────────────────────────
+/**
+ * Returns a localStorage key scoped to the current user (or "guest").
+ * The user ID is read from the 'user' entry saved by AuthContext.
+ */
+const getCourseCacheKey = () => {
+  try {
+    const saved = localStorage.getItem('user');
+    const uid = saved ? JSON.parse(saved)?.id : null;
+    return uid ? `courses_cache_${uid}` : 'courses_cache_guest';
+  } catch {
+    return 'courses_cache_guest';
+  }
+};
+
+const loadCoursesFromCache = () => {
+  try {
+    const raw = localStorage.getItem(getCourseCacheKey());
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+};
+
+const saveCoursesToCache = (courses) => {
+  try {
+    localStorage.setItem(getCourseCacheKey(), JSON.stringify(courses));
+  } catch {
+    // Ignore quota errors
+  }
+};
+
+const clearCoursesCache = () => {
+  try {
+    localStorage.removeItem(getCourseCacheKey());
+  } catch {
+    // Ignore
+  }
+};
+// ──────────────────────────────────────────────────────────────────────────────
+
 export const CourseProvider = ({ children }) => {
-  const [courses, setCourses] = useState([]);
+  // Initialise from cache immediately — prevents a blank sidebar on every reload
+  const [courses, setCourses] = useState(() => {
+    const cached = loadCoursesFromCache();
+    return Array.isArray(cached) ? cached : [];
+  });
   const [activeCourse, setActiveCourse] = useState(null);
   const [activeLesson, setActiveLesson] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isLoadingCourses, setIsLoadingCourses] = useState(true);
+  // If we already have a cache, skip the loading skeleton on first render
+  const [isLoadingCourses, setIsLoadingCourses] = useState(() => {
+    const cached = loadCoursesFromCache();
+    return !Array.isArray(cached);
+  });
   const [error, setError] = useState(null);
 
   // Helper to hydrate a course object with localStorage progress
@@ -26,8 +75,8 @@ export const CourseProvider = ({ children }) => {
   };
 
   /**
-   * Fetches the current user's (or guest's) courses from the backend.
-   * Works for both authenticated users (uses JSESSIONID) and guests (uses GUEST_SESSION_ID).
+   * Fetches the current user's (or guest's) courses from the backend and
+   * updates both React state and the localStorage cache.
    */
   const fetchUserCourses = async () => {
     setIsLoadingCourses(true);
@@ -36,23 +85,49 @@ export const CourseProvider = ({ children }) => {
       const list = Array.isArray(data) ? data : [];
       const hydrated = list.map(c => hydrateCourseProgress(c)).filter(Boolean);
       setCourses(hydrated);
+      saveCoursesToCache(hydrated);
     } catch (err) {
       console.error('Failed to fetch courses:', err);
-      setCourses([]);
+      // Don't wipe the cache on network errors — keep showing stale data
     } finally {
       setIsLoadingCourses(false);
     }
   };
 
-  // Load courses on mount — works for both guests and authenticated users.
-  // Also listens for 'auth:login' so courses are refreshed (including transferred
-  // guest courses) immediately after the user logs in or registers.
+  // On mount: if we already have a cache, render it immediately and skip
+  // the API call. Only fetch from the server on the very first load (no cache)
+  // or after login/logout events.
   useEffect(() => {
-    fetchUserCourses();
+    const cached = loadCoursesFromCache();
+    if (!Array.isArray(cached)) {
+      // No cache yet — do an initial fetch
+      fetchUserCourses();
+    } else {
+      // Already populated from cache in useState initialiser; mark loading done
+      setIsLoadingCourses(false);
+    }
 
-    const onAuthLogin = () => fetchUserCourses();
+    // After login: clear stale cache (previous user / guest) and fetch fresh data
+    const onAuthLogin = () => {
+      clearCoursesCache();
+      fetchUserCourses();
+    };
+
+    // After logout: clear courses from state and wipe the cache
+    const onAuthLogout = () => {
+      clearCoursesCache();
+      setCourses([]);
+      setActiveCourse(null);
+      setActiveLesson(null);
+      setIsLoadingCourses(false);
+    };
+
     window.addEventListener('auth:login', onAuthLogin);
-    return () => window.removeEventListener('auth:login', onAuthLogin);
+    window.addEventListener('auth:logout', onAuthLogout);
+    return () => {
+      window.removeEventListener('auth:login', onAuthLogin);
+      window.removeEventListener('auth:logout', onAuthLogout);
+    };
   }, []);
 
   const generateCourse = async (prompt) => {
@@ -61,7 +136,11 @@ export const CourseProvider = ({ children }) => {
     try {
       const newCourse = await api.generateCourse(prompt);
       const hydrated = hydrateCourseProgress(newCourse);
-      setCourses((prev) => [hydrated, ...(Array.isArray(prev) ? prev : [])].filter(Boolean));
+      setCourses((prev) => {
+        const updated = [hydrated, ...(Array.isArray(prev) ? prev : [])].filter(Boolean);
+        saveCoursesToCache(updated);
+        return updated;
+      });
       return hydrated;
     } catch (err) {
       setError('Failed to generate course. Please try again.');
@@ -70,6 +149,7 @@ export const CourseProvider = ({ children }) => {
       setIsGenerating(false);
     }
   };
+
 
   const updateProgress = async (courseId, lessonId, completed) => {
     try {
