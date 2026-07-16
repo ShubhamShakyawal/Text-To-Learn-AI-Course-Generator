@@ -7,6 +7,7 @@ import com.example.backend.Text.to.Learn.entities.LessonEntity;
 import com.example.backend.Text.to.Learn.entities.ModuleEntity;
 import com.example.backend.Text.to.Learn.entities.UserEntity;
 import com.example.backend.Text.to.Learn.repositories.CourseRepository;
+import com.example.backend.Text.to.Learn.repositories.LessonRepository;
 import com.example.backend.Text.to.Learn.repositories.UserRepository;
 import com.example.backend.Text.to.Learn.services.AiService;
 import com.example.backend.Text.to.Learn.services.CourseService;
@@ -30,6 +31,7 @@ public class CourseServiceImpl implements CourseService {
     private static final Logger log = LoggerFactory.getLogger(CourseServiceImpl.class);
 
     private final CourseRepository courseRepository;
+    private final LessonRepository lessonRepository;
     private final UserRepository userRepository;
     private final AiService aiService;
     private final YoutubeService youtubeService;
@@ -45,18 +47,18 @@ public class CourseServiceImpl implements CourseService {
         course.setUser(user);
         CourseEntity saved = courseRepository.save(course);
         log.info("Course '{}' saved for user id: {}", saved.getTitle(), userId);
-        return modelMapper.map(saved, CourseDTO.class);
+        return toCourseDTO(saved);
     }
 
     @Override
     public List<CourseDTO> getAllCoursesByUser(Long userId) {
         return courseRepository.findByUserId(userId).stream()
-                .map(c -> modelMapper.map(c, CourseDTO.class)).toList();
+                .map(this::toCourseDTO).toList();
     }
 
     @Override
     public CourseDTO getCourseById(Long id, Long userId) {
-        return modelMapper.map(loadAndVerifyUser(id, userId), CourseDTO.class);
+        return toCourseDTO(loadAndVerifyUser(id, userId));
     }
 
     @Override
@@ -64,7 +66,7 @@ public class CourseServiceImpl implements CourseService {
         CourseEntity course = loadAndVerifyUser(id, userId);
         course.setTitle(dto.getTitle());
         course.setDescription(dto.getDescription());
-        return modelMapper.map(courseRepository.save(course), CourseDTO.class);
+        return toCourseDTO(courseRepository.save(course));
     }
 
     @Override
@@ -89,18 +91,18 @@ public class CourseServiceImpl implements CourseService {
         course.setGuestId(guestId);
         CourseEntity saved = courseRepository.save(course);
         log.info("Course '{}' saved for guest id: {}", saved.getTitle(), guestId);
-        return modelMapper.map(saved, CourseDTO.class);
+        return toCourseDTO(saved);
     }
 
     @Override
     public List<CourseDTO> getAllCoursesByGuest(String guestId) {
         return courseRepository.findByGuestIdAndUserIsNull(guestId).stream()
-                .map(c -> modelMapper.map(c, CourseDTO.class)).toList();
+                .map(this::toCourseDTO).toList();
     }
 
     @Override
     public CourseDTO getCourseByIdForGuest(Long id, String guestId) {
-        return modelMapper.map(loadAndVerifyGuest(id, guestId), CourseDTO.class);
+        return toCourseDTO(loadAndVerifyGuest(id, guestId));
     }
 
     @Override
@@ -108,7 +110,7 @@ public class CourseServiceImpl implements CourseService {
         CourseEntity course = loadAndVerifyGuest(id, guestId);
         course.setTitle(dto.getTitle());
         course.setDescription(dto.getDescription());
-        return modelMapper.map(courseRepository.save(course), CourseDTO.class);
+        return toCourseDTO(courseRepository.save(course));
     }
 
     @Override
@@ -140,6 +142,40 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.saveAll(guestCourses);
         log.info("Transferred {} course(s) from guest {} to user {}", guestCourses.size(), guestId, userId);
         return guestCourses.size();
+    }
+
+    // ── Lesson progress ────────────────────────────────────────────────────
+
+    @Override @Transactional
+    public CourseDTO updateLessonProgress(Long courseId, Long lessonId, boolean completed, Long userId) {
+        CourseEntity course = loadAndVerifyUser(courseId, userId);
+        return applyProgress(course, lessonId, completed);
+    }
+
+    @Override @Transactional
+    public CourseDTO updateLessonProgress(Long courseId, Long lessonId, boolean completed, String guestId) {
+        CourseEntity course = loadAndVerifyGuest(courseId, guestId);
+        return applyProgress(course, lessonId, completed);
+    }
+
+    /**
+     * Finds the lesson within the course, flips its {@code completed} flag,
+     * saves it, and returns the updated {@link CourseDTO}.
+     */
+    private CourseDTO applyProgress(CourseEntity course, Long lessonId, boolean completed) {
+        LessonEntity lesson = course.getModules().stream()
+                .flatMap(m -> m.getLessons().stream())
+                .filter(l -> l.getId().equals(lessonId))
+                .findFirst()
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Lesson not found in course: " + lessonId));
+        lesson.setCompleted(completed);
+        lessonRepository.save(lesson);
+        log.info("Lesson {} marked completed={} in course {}", lessonId, completed, course.getId());
+        // Reload to reflect the saved state before computing percentage
+        CourseEntity refreshed = courseRepository.findById(course.getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));
+        return toCourseDTO(refreshed);
     }
 
     // ── Shared helpers ─────────────────────────────────────────────────────
@@ -176,6 +212,23 @@ public class CourseServiceImpl implements CourseService {
             }
         }
         return course;
+    }
+
+    /**
+     * Maps a {@link CourseEntity} to {@link CourseDTO} and computes the
+     * {@code completionPercentage} from the {@code lesson.completed} flags.
+     */
+    private CourseDTO toCourseDTO(CourseEntity entity) {
+        CourseDTO dto = modelMapper.map(entity, CourseDTO.class);
+        if (entity.getModules() != null) {
+            long total = entity.getModules().stream()
+                    .flatMap(m -> m.getLessons().stream()).count();
+            long done  = entity.getModules().stream()
+                    .flatMap(m -> m.getLessons().stream())
+                    .filter(LessonEntity::isCompleted).count();
+            dto.setCompletionPercentage(total == 0 ? 0 : (int) Math.round(done * 100.0 / total));
+        }
+        return dto;
     }
 
     private UserEntity loadUser(Long userId) {

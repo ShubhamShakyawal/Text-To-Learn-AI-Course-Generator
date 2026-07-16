@@ -100,7 +100,34 @@ public class CourseController {
         return ResponseEntity.ok(courseService.updateCourseForGuest(id, dto, guestId));
     }
 
-    // ── Helpers ──────────────────────────────────────────────────────────────
+    /**
+     * Marks a lesson as completed or incomplete.
+     *
+     * <p>HTTP: {@code PATCH /api/courses/{courseId}/progress/{lessonId}}
+     *
+     * <p>Request body: {@code { "completed": true }}
+     *
+     * @return updated {@link CourseDTO} with recalculated {@code completionPercentage}
+     */
+    @PatchMapping("/{courseId}/progress/{lessonId}")
+    public ResponseEntity<CourseDTO> updateLessonProgress(
+            @PathVariable Long courseId,
+            @PathVariable Long lessonId,
+            @RequestBody java.util.Map<String, Boolean> body,
+            HttpServletRequest request) {
+
+        boolean completed = Boolean.TRUE.equals(body.get("completed"));
+
+        UserDTO user = sessionUser(request);
+        if (user != null) {
+            log.info("PATCH /api/courses/{}/progress/{} completed={} user:{}", courseId, lessonId, completed, user.getId());
+            return ResponseEntity.ok(courseService.updateLessonProgress(courseId, lessonId, completed, user.getId()));
+        }
+        String guestId = requireGuest(request);
+        log.info("PATCH /api/courses/{}/progress/{} completed={} guest:{}", courseId, lessonId, completed, guestId);
+        return ResponseEntity.ok(courseService.updateLessonProgress(courseId, lessonId, completed, guestId));
+    }
+
 
     /** Returns the authenticated UserDTO from the session, or null if not logged in. */
     private UserDTO sessionUser(HttpServletRequest request) {

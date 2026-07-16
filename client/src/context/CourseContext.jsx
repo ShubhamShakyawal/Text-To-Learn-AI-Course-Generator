@@ -62,15 +62,31 @@ export const CourseProvider = ({ children }) => {
   });
   const [error, setError] = useState(null);
 
-  // Helper to hydrate a course object with localStorage progress
+  // Helper to hydrate a course object with DB-backed progress.
+  // The backend now returns lesson.completed on every lesson; we collect
+  // the IDs of completed lessons and attach them as completedLessons[].
+  // Falls back to localStorage for any lesson IDs not yet in the API response
+  // (e.g. immediately after an optimistic local update before the PATCH returns).
   const hydrateCourseProgress = (course) => {
     if (!course) return null;
+
+    // Derive completedLessons from the DB-backed lesson.completed flags
+    const dbCompleted = (course.modules || []).flatMap(m =>
+      (m.lessons || []).filter(l => l.completed).map(l => l.id)
+    );
+
+    // Merge with any locally cached IDs (handles the brief optimistic window)
     const progressKey = `progress_${course.id}`;
     const saved = localStorage.getItem(progressKey);
-    const completedLessons = saved ? JSON.parse(saved) : [];
+    const localCompleted = saved ? JSON.parse(saved) : [];
+    const merged = [...new Set([...dbCompleted, ...(Array.isArray(localCompleted) ? localCompleted : [])])];
+
+    // Sync merged list back to localStorage
+    localStorage.setItem(progressKey, JSON.stringify(merged));
+
     return {
       ...course,
-      completedLessons: Array.isArray(completedLessons) ? completedLessons : []
+      completedLessons: merged,
     };
   };
 
@@ -153,6 +169,7 @@ export const CourseProvider = ({ children }) => {
 
   const updateProgress = async (courseId, lessonId, completed) => {
     try {
+      // ── Optimistic local update ─────────────────────────────────────────
       const progressKey = `progress_${courseId}`;
       const saved = localStorage.getItem(progressKey);
       let currentProgress = saved ? JSON.parse(saved) : [];
@@ -165,30 +182,36 @@ export const CourseProvider = ({ children }) => {
       }
       localStorage.setItem(progressKey, JSON.stringify(currentProgress));
 
-      setCourses(prev => {
-        const list = Array.isArray(prev) ? prev : [];
-        return list.map(course => {
-          if (String(course.id) === String(courseId)) {
-            return {
-              ...course,
-              completedLessons: currentProgress
-            };
-          }
-          return course;
-        });
-      });
+      // Apply optimistic update to UI immediately
+      const applyOptimistic = (course) =>
+        course && String(course.id) === String(courseId)
+          ? { ...course, completedLessons: currentProgress }
+          : course;
 
-      setActiveCourse(prev => {
-        if (prev && String(prev.id) === String(courseId)) {
-          return {
-            ...prev,
-            completedLessons: currentProgress
-          };
-        }
-        return prev;
-      });
+      setCourses(prev => (Array.isArray(prev) ? prev : []).map(applyOptimistic));
+      setActiveCourse(prev => applyOptimistic(prev));
 
-      await api.updateLessonProgress(courseId, lessonId, completed);
+      // ── Persist to DB ───────────────────────────────────────────────────
+      // PATCH returns the updated CourseDTO with server-computed completionPercentage
+      const updatedCourse = await api.updateLessonProgress(courseId, lessonId, completed);
+      if (updatedCourse) {
+        const hydrated = hydrateCourseProgress(updatedCourse);
+        // Replace the course in state with the authoritative server version
+        setCourses(prev =>
+          (Array.isArray(prev) ? prev : []).map(c =>
+            String(c.id) === String(courseId) ? hydrated : c
+          )
+        );
+        setActiveCourse(prev =>
+          prev && String(prev.id) === String(courseId) ? hydrated : prev
+        );
+        // Keep local cache in sync
+        saveCoursesToCache(
+          (courses.map ? courses : []).map(c =>
+            String(c.id) === String(courseId) ? hydrated : c
+          )
+        );
+      }
     } catch (err) {
       console.error('Failed to update progress:', err);
     }

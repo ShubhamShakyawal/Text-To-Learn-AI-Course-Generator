@@ -40,4 +40,11 @@ public class CourseDTO {
      * Each module contains its own list of lessons.
      */
     private List<ModuleDTO> modules;
+
+    /**
+     * Percentage of lessons marked as completed (0–100), computed from
+     * {@code lesson.completed} flags in the database. Returned pre-calculated
+     * so the frontend does not need to iterate over all lessons.
+     */
+    private int completionPercentage;
 }

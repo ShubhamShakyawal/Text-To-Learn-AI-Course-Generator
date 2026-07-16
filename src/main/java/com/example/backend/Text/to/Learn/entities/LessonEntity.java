@@ -68,4 +68,14 @@ public class LessonEntity {
      * May be {@code null} if no video was found or the YouTube lookup was skipped.
      */
     private String YoutubeUrl;
+
+    /**
+     * Whether the learner has marked this lesson as completed.
+     *
+     * <p>Persisted in the {@code lesson} table so progress survives browser
+     * clears and cross-device sessions. Defaults to {@code false}.</p>
+     */
+    @Column(nullable = false)
+    @Builder.Default
+    private boolean completed = false;
 }

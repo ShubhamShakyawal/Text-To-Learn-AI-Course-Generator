@@ -42,4 +42,10 @@ public class LessonDTO {
      * Stored for auditing/re-fetch purposes.
      */
     private String youtubeQuery;
+
+    /**
+     * Whether the learner has completed this lesson.
+     * Sourced from the {@code lesson.completed} column in the database.
+     */
+    private boolean completed;
 }

@@ -88,6 +88,8 @@ public class SecurityConfig {
                                                 .permitAll()
                                                 // Health check public
                                                 .requestMatchers("/api/health").permitAll()
+                                                // Temporary debug endpoint — remove after resolving production issues
+                                                .requestMatchers("/api/debug/**").permitAll()
                                                 // Course endpoints open to both authenticated users AND guest sessions.
                                                 // Ownership is enforced inside CourseController via session/cookie.
                                                 .requestMatchers("/api/courses/**").permitAll()

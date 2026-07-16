@@ -38,4 +38,28 @@ public interface CourseService {
      * @return number of courses transferred
      */
     int transferGuestCourses(String guestId, Long userId);
+
+    // ── Lesson progress ────────────────────────────────────────────────────
+
+    /**
+     * Marks a lesson within a course as completed or not for an authenticated user.
+     *
+     * @param courseId  the course the lesson belongs to
+     * @param lessonId  the lesson to update
+     * @param completed {@code true} to mark complete, {@code false} to unmark
+     * @param userId    the owning user (used for access control)
+     * @return updated {@link CourseDTO} with recalculated {@code completionPercentage}
+     */
+    CourseDTO updateLessonProgress(Long courseId, Long lessonId, boolean completed, Long userId);
+
+    /**
+     * Marks a lesson within a course as completed or not for a guest session.
+     *
+     * @param courseId  the course the lesson belongs to
+     * @param lessonId  the lesson to update
+     * @param completed {@code true} to mark complete, {@code false} to unmark
+     * @param guestId   the owning guest session ID (used for access control)
+     * @return updated {@link CourseDTO} with recalculated {@code completionPercentage}
+     */
+    CourseDTO updateLessonProgress(Long courseId, Long lessonId, boolean completed, String guestId);
 }

@@ -1,91 +1,296 @@
-2026-07-15T00:26:06.049+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m31s675ms).
-2026-07-15T00:26:17.809+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@90adca0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:26:27.239+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@696a2cd8 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:26:32.943+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2f2378ac (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:35:05.822+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m59s773ms).
-2026-07-15T00:35:08.671+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4b29f977 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:35:31.670+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@152c728e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:35:55.971+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@af571e8 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:35:58.218+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2950cf6c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:36:04.097+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@394be279 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:36:05.465+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@34d2257e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:36:09.170+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@1b56b727 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:36:22.899+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 26.0.1 with PID 20979 (/Users/shubhamshakyawal/Projects/Text-To-Learn-AI-Course-Generator/target/classes started by shubhamshakyawal in /Users/shubhamshakyawal/Projects/Text-To-Learn-AI-Course-Generator)
-2026-07-15T00:36:22.899+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
-2026-07-15T00:36:23.132+05:30  INFO 20979 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-15T00:36:23.174+05:30  INFO 20979 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 5 JPA repository interfaces.
-2026-07-15T00:36:23.217+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
-2026-07-15T00:36:23.219+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 45 properties registered.
-2026-07-15T00:36:23.327+05:30  INFO 20979 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-2026-07-15T00:36:23.332+05:30  INFO 20979 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-07-15T00:36:23.332+05:30  INFO 20979 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
-2026-07-15T00:36:23.350+05:30  INFO 20979 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 437 ms
-2026-07-15T00:36:23.389+05:30  INFO 20979 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-07-15T00:36:23.401+05:30  INFO 20979 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
-2026-07-15T00:36:23.534+05:30  INFO 20979 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-15T00:36:23.543+05:30  INFO 20979 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-07-15T00:36:26.622+05:30  INFO 20979 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1cdad619
-2026-07-15T00:36:26.623+05:30  INFO 20979 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-07-15T00:36:26.947+05:30  WARN 20979 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-07-15T00:36:28.147+05:30  INFO 20979 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [jdbc:postgresql://ep-rapid-fog-atfh600f-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require]
+2026-07-17T00:00:04.598+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2f4da9b0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:18.718+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@605a51f1 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:20.163+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6ff959e1 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:24.607+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@ee19911 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:31.487+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@3c8694e5 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:35.478+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4fe41792 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:40.670+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4dcf266e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:00:45.461+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@14ab2bc3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-07-17T00:19:27.193+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Starting TextToLearnApplication using Java 26.0.1 with PID 35041 (/Users/shubhamshakyawal/Projects/Text-To-Learn-AI-Course-Generator/target/classes started by shubhamshakyawal in /Users/shubhamshakyawal/Projects/Text-To-Learn-AI-Course-Generator)
+2026-07-17T00:19:27.193+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-07-17T00:19:27.460+05:30  INFO 35041 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-17T00:19:27.513+05:30  INFO 35041 --- [Text-to-Learn] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 5 JPA repository interfaces.
+2026-07-17T00:19:27.563+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : Loading environment variables from .env file...
+2026-07-17T00:19:27.565+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.t.L.configuration.DotenvConfig   : .env file loaded successfully. 45 properties registered.
+2026-07-17T00:19:27.687+05:30  INFO 35041 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-07-17T00:19:27.692+05:30  INFO 35041 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-17T00:19:27.692+05:30  INFO 35041 --- [Text-to-Learn] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-07-17T00:19:27.710+05:30  INFO 35041 --- [Text-to-Learn] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 502 ms
+2026-07-17T00:19:27.754+05:30  INFO 35041 --- [Text-to-Learn] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-17T00:19:27.775+05:30  INFO 35041 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-07-17T00:19:27.930+05:30  INFO 35041 --- [Text-to-Learn] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-17T00:19:27.941+05:30  INFO 35041 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-17T00:19:29.926+05:30  INFO 35041 --- [Text-to-Learn] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6a562255
+2026-07-17T00:19:29.928+05:30  INFO 35041 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-17T00:19:30.133+05:30  WARN 35041 --- [Text-to-Learn] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-17T00:19:30.875+05:30  INFO 35041 --- [Text-to-Learn] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://db.tnqgqiavopgcpydgbhym.supabase.co:5432/postgres?user=postgres&password=npg_V4NMQyr7lecS]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
-	Database version: 18.4
-	Default catalog/schema: neondb/public
+	Database version: 17.6
+	Default catalog/schema: postgres/public
 	Autocommit mode: undefined/unknown
 	Isolation level: READ_COMMITTED [default READ_COMMITTED]
 	JDBC fetch size: none
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-07-15T00:36:28.485+05:30  INFO 20979 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-07-15T00:36:30.650+05:30  INFO 20979 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-15T00:36:30.696+05:30  INFO 20979 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-15T00:36:30.895+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
-2026-07-15T00:36:30.960+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
-2026-07-15T00:36:30.989+05:30  INFO 20979 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
-2026-07-15T00:36:31.007+05:30  WARN 20979 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-15T00:36:31.015+05:30  WARN 20979 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+2026-07-17T00:19:31.263+05:30  INFO 35041 --- [Text-to-Learn] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-17T00:19:33.106+05:30  WARN 35041 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc.warn              : HHH000247: ErrorCode: 0, SQLState: 00000
+2026-07-17T00:19:33.106+05:30  WARN 35041 --- [Text-to-Learn] [main] org.hibernate.orm.jdbc.warn              : constraint "uk6dotkott2kjsp8vw4d0m25fb7" of relation "users" does not exist, skipping
+2026-07-17T00:19:33.863+05:30  INFO 35041 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-17T00:19:33.904+05:30  INFO 35041 --- [Text-to-Learn] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-17T00:19:34.106+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.WebClientConfig            : Registering OpenRouter WebClient bean with base URL: https://openrouter.ai/api/v1
+2026-07-17T00:19:34.188+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ModelMapperConfig          : Registering ModelMapper bean.
+2026-07-17T00:19:34.215+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.t.L.c.ObjectMapperConfig         : Registering Jackson ObjectMapper bean.
+2026-07-17T00:19:34.235+05:30  WARN 35041 --- [Text-to-Learn] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-17T00:19:34.244+05:30  WARN 35041 --- [Text-to-Learn] [main] .s.a.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 5edfc153-d0bb-46d6-8c86-7a80f2c203eb
+Using generated security password: 71eb0ab6-be4b-4713-b697-aec740955332
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-07-15T00:36:31.017+05:30  INFO 20979 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-07-15T00:36:31.241+05:30  WARN 20979 --- [Text-to-Learn] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
-2026-07-15T00:36:31.243+05:30  INFO 20979 --- [Text-to-Learn] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-15T00:36:31.243+05:30  INFO 20979 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-07-15T00:36:33.355+05:30  INFO 20979 --- [Text-to-Learn] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-07-15T00:36:33.378+05:30  INFO 20979 --- [Text-to-Learn] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2026-07-15T00:36:33.388+05:30 ERROR 20979 --- [Text-to-Learn] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
-2026-07-15T00:36:45.756+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7d68c61e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:36:47.039+05:30  WARN 13002 --- [Text-to-Learn] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@454d7b65 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
-2026-07-15T00:40:02.602+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
-2026-07-15T00:40:02.603+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
-2026-07-15T00:40:03.245+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
-2026-07-15T00:40:04.007+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from df83545d-ec52-4903-99ae-e836422a37cf to user 1
-2026-07-15T00:40:04.008+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-7] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
-2026-07-15T00:46:23.884+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
-2026-07-15T00:46:23.885+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
-2026-07-15T00:46:24.540+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
-2026-07-15T00:46:25.319+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from 2f717e1a-35ad-437c-a9ff-8f173901936c to user 1
-2026-07-15T00:46:25.320+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
-2026-07-15T00:48:05.910+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 1
-2026-07-15T00:53:41.419+05:30  INFO 13002 --- [Text-to-Learn] [http-nio-8080-exec-3] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [g_state={"i_l":0,"i_ll":1784056963575,"i_b":"ecgb8GVVleZSyXavkrT+qg1ryWh6jQqj+LOMx+lVOw4","i_e":{"enable_itp_optimization":24},"i_et":1784056963575}] that contained an invalid cookie. That cookie will be ignored.
+2026-07-17T00:19:34.246+05:30  INFO 35041 --- [Text-to-Learn] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-17T00:19:34.498+05:30  INFO 35041 --- [Text-to-Learn] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-07-17T00:19:34.502+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Started TextToLearnApplication in 7.436 seconds (process running for 7.565)
+2026-07-17T00:19:34.503+05:30  INFO 35041 --- [Text-to-Learn] [main] c.e.b.T.to.Learn.TextToLearnApplication  : Text-to-Learn application started successfully.
+2026-07-17T00:25:53.122+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [g_state={"i_l":0,"i_ll":1784224619448,"i_b":"rgkkdh4QelciyHK2pOmJiu35Y2brwnaSxwok+dGTK5c","i_e":{"enable_itp_optimization":24},"i_et":1784224619448};] that contained an invalid cookie. That cookie will be ignored.
  Note: further occurrences of this error will be logged at DEBUG level.
+2026-07-17T00:25:53.126+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-17T00:25:53.127+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-17T00:25:53.130+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-07-17T00:25:57.823+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.Text.to.Learn.services.AiService   : Requesting AI  for Connection Status: 
+2026-07-17T00:25:57.838+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'India'
+2026-07-17T00:25:58.764+05:30 ERROR 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] i.n.r.d.DnsServerAddressStreamProviders  : Unable to load io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'. Use DEBUG level to see the full stack: java.lang.UnsatisfiedLinkError: failed to load the required native library
+2026-07-17T00:25:59.544+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'India': https://www.youtube.com/watch?v=K-XlwxE0jMs
+2026-07-17T00:27:30.396+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.Text.to.Learn.services.AiService   : Requesting AI  for Connection Status: 
+2026-07-17T00:27:30.399+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'India'
+2026-07-17T00:27:30.817+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'India': https://www.youtube.com/watch?v=K-XlwxE0jMs
+2026-07-17T00:27:36.400+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.Text.to.Learn.services.AiService   : Requesting AI  for Connection Status: 
+2026-07-17T00:27:36.401+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'India'
+2026-07-17T00:27:36.857+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'India': https://www.youtube.com/watch?v=K-XlwxE0jMs
+2026-07-17T00:28:18.938+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:b9273ad6-11e6-475d-b1ed-3ca17f0fc598, topic:'Master System design for intermediate '
+2026-07-17T00:28:18.938+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='Master System design for intermediate ', guest id=b9273ad6-11e6-475d-b1ed-3ca17f0fc598
+2026-07-17T00:28:18.938+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'Master System design for intermediate '
+2026-07-17T00:29:07.199+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'Master System design for intermediate '. Response length: 4463 chars
+2026-07-17T00:29:07.207+05:30 ERROR 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Course generation failed for topic: Master System design for intermediate ] with root cause
+
+tools.jackson.core.exc.StreamReadException: Unexpected character ('`' (code 96)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+	at tools.jackson.core.JsonParser._constructReadException(JsonParser.java:1800) ~[jackson-core-3.0.4.jar:3.0.4]
+	at tools.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:1049) ~[jackson-core-3.0.4.jar:3.0.4]
+	at tools.jackson.core.json.ReaderBasedJsonParser._handleOddValue(ReaderBasedJsonParser.java:2061) ~[jackson-core-3.0.4.jar:3.0.4]
+	at tools.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:791) ~[jackson-core-3.0.4.jar:3.0.4]
+	at tools.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:2704) ~[jackson-databind-3.0.4.jar:3.0.4]
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2601) ~[jackson-databind-3.0.4.jar:3.0.4]
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1518) ~[jackson-databind-3.0.4.jar:3.0.4]
+	at com.example.backend.Text.to.Learn.services.impl.CourseServiceImpl.runAIPipeline(CourseServiceImpl.java:151) ~[classes/:na]
+	at com.example.backend.Text.to.Learn.services.impl.CourseServiceImpl.generateCourseFromAIForGuest(CourseServiceImpl.java:124) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.3.jar:7.0.3]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:715) ~[spring-aop-7.0.3.jar:7.0.3]
+	at com.example.backend.Text.to.Learn.services.impl.CourseServiceImpl$$SpringCGLIB$$0.generateCourseFromAIForGuest(<generated>) ~[classes/:na]
+	at com.example.backend.Text.to.Learn.controllers.CourseController.generateCourse(CourseController.java:60) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649) ~[tomcat-embed-core-11.0.15.jar:6.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874) ~[spring-webmvc-7.0.3.jar:7.0.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710) ~[tomcat-embed-core-11.0.15.jar:6.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at com.example.backend.Text.to.Learn.configuration.GuestSessionFilter.doFilterInternal(GuestSessionFilter.java:90) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at com.example.backend.Text.to.Learn.configuration.SessionCookieSameSiteFilter.doFilterInternal(SessionCookieSameSiteFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:371) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.2.jar:7.0.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.2.jar:7.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-7.0.3.jar:7.0.3]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+
+2026-07-17T00:31:22.562+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/register — email: pikachu@texttolearn.com
+2026-07-17T00:31:22.562+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registering new user with email: pikachu@texttolearn.com
+2026-07-17T00:31:23.582+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User registered successfully with id: 1
+2026-07-17T00:31:23.971+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from b9273ad6-11e6-475d-b1ed-3ca17f0fc598 to user 1
+2026-07-17T00:31:23.972+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-3] c.e.b.T.t.L.controllers.AuthController   : Registration successful for user id: 1
+2026-07-17T00:31:42.161+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — user:1, topic:'Master data structures and algorithms'
+2026-07-17T00:31:42.162+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='Master data structures and algorithms', user id=1
+2026-07-17T00:31:42.162+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'Master data structures and algorithms'
+2026-07-17T00:32:52.037+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'Master data structures and algorithms'. Response length: 4714 chars
+2026-07-17T00:32:52.055+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Introduction to Algorithms and Time Complexity'
+2026-07-17T00:32:52.667+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Introduction to Algorithms and Time Complexity': https://www.youtube.com/watch?v=9TlHvipP5yA
+2026-07-17T00:32:52.667+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Big O Notation Explained with Real-World Examples'
+2026-07-17T00:32:53.059+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Big O Notation Explained with Real-World Examples': https://www.youtube.com/watch?v=XMUe3zFhM5c
+2026-07-17T00:32:53.059+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Problem-Solving Approach in Algorithms'
+2026-07-17T00:32:53.452+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Problem-Solving Approach in Algorithms': https://www.youtube.com/watch?v=itbkP50iggM
+2026-07-17T00:32:53.453+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Arrays Data Structure Explained'
+2026-07-17T00:32:53.730+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Arrays Data Structure Explained': https://www.youtube.com/watch?v=3_x_Fb31NLE
+2026-07-17T00:32:53.730+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Linked Lists in Depth with Code Examples'
+2026-07-17T00:32:54.108+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Linked Lists in Depth with Code Examples': https://www.youtube.com/watch?v=XJyfHJqQOIE
+2026-07-17T00:32:54.109+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Stacks and Queues Tutorial'
+2026-07-17T00:32:54.399+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Stacks and Queues Tutorial': https://www.youtube.com/watch?v=tqQ5fTamIN4
+2026-07-17T00:32:54.399+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Sorting Algorithms Explained'
+2026-07-17T00:32:54.681+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Sorting Algorithms Explained': https://www.youtube.com/watch?v=5d1pyghLs3M
+2026-07-17T00:32:54.682+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Binary Search Algorithm Walkthrough'
+2026-07-17T00:32:55.126+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Binary Search Algorithm Walkthrough': https://www.youtube.com/watch?v=V_T5NuccwRA
+2026-07-17T00:32:55.127+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Greedy vs Dynamic Programming with Examples'
+2026-07-17T00:32:55.453+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Greedy vs Dynamic Programming with Examples': https://www.youtube.com/watch?v=0BhhiQGDbEA
+2026-07-17T00:32:55.453+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Hash Tables and Hash Functions Explained'
+2026-07-17T00:32:55.857+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Hash Tables and Hash Functions Explained': https://www.youtube.com/watch?v=KyUTuwz_b7Q
+2026-07-17T00:32:55.857+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Heap Data Structure and Applications'
+2026-07-17T00:32:56.232+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Heap Data Structure and Applications': https://www.youtube.com/watch?v=uuot9ItgTEI
+2026-07-17T00:32:56.232+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Graph and Tree Traversals Tutorial'
+2026-07-17T00:32:56.627+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Graph and Tree Traversals Tutorial': https://www.youtube.com/watch?v=XRcC7bAtL3c
+2026-07-17T00:32:56.628+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Competitive Programming Problem Solving'
+2026-07-17T00:32:56.971+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Competitive Programming Problem Solving': https://www.youtube.com/watch?v=oVi-fSX8cpg
+2026-07-17T00:32:56.971+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Algorithms in Real-World Applications'
+2026-07-17T00:32:57.288+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Algorithms in Real-World Applications': https://www.youtube.com/watch?v=SmyPTnlqhlk
+2026-07-17T00:32:57.288+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Building a Data Structure-Based Project'
+2026-07-17T00:32:57.730+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Building a Data Structure-Based Project': https://www.youtube.com/watch?v=Ve0muiObnrY
+2026-07-17T00:33:02.891+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'Mastering Data Structures and Algorithms: From Fundamentals to Advanced Techniques' saved for user id: 1
+2026-07-17T00:34:38.709+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-10] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 1
+2026-07-17T00:34:53.602+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: pikachu@texttolearn.com
+2026-07-17T00:34:53.602+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: pikachu@texttolearn.com
+2026-07-17T00:34:54.091+05:30  WARN 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login failed — incorrect password for email: pikachu@texttolearn.com
+2026-07-17T00:35:00.511+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: pikachu@texttolearn.com
+2026-07-17T00:35:00.511+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: pikachu@texttolearn.com
+2026-07-17T00:35:01.009+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 1 logged in successfully
+2026-07-17T00:35:01.010+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 1
+2026-07-17T00:35:18.194+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 1
+2026-07-17T00:35:26.664+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.c.CourseController           : POST /api/courses/generate — guest:53d771c3-4ff2-4847-bcb9-f47179c3fb93, topic:'Master design patterns'
+2026-07-17T00:35:26.665+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.CourseServiceImpl     : AI generation for topic='Master design patterns', guest id=53d771c3-4ff2-4847-bcb9-f47179c3fb93
+2026-07-17T00:35:26.665+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.Text.to.Learn.services.AiService   : Requesting AI-generated course for topic: 'Master design patterns'
+2026-07-17T00:36:11.047+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.Text.to.Learn.services.AiService   : AI course generation complete for topic: 'Master design patterns'. Response length: 3981 chars
+2026-07-17T00:36:11.048+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Singleton Design Pattern tutorial Java example'
+2026-07-17T00:36:11.722+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Singleton Design Pattern tutorial Java example': https://www.youtube.com/watch?v=KUTqnWswPV4
+2026-07-17T00:36:11.723+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Factory Method Pattern explained with real-world example'
+2026-07-17T00:36:12.196+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Factory Method Pattern explained with real-world example': https://www.youtube.com/watch?v=dMK4TbG29fk
+2026-07-17T00:36:12.196+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Abstract Factory Pattern in C# practical walkthrough'
+2026-07-17T00:36:12.520+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Abstract Factory Pattern in C# practical walkthrough': https://www.youtube.com/watch?v=hnZHmJoNTjk
+2026-07-17T00:36:12.520+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Adapter Pattern in Java vs .NET comparison'
+2026-07-17T00:36:12.962+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Adapter Pattern in Java vs .NET comparison': https://www.youtube.com/watch?v=g0rsa5m3W2w
+2026-07-17T00:36:12.963+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Decorator Pattern in action JavaScript example'
+2026-07-17T00:36:13.369+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Decorator Pattern in action JavaScript example': https://www.youtube.com/watch?v=3pxRSKEILx0
+2026-07-17T00:36:13.370+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Composite Pattern explained with Java diagram'
+2026-07-17T00:36:13.884+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Composite Pattern explained with Java diagram': https://www.youtube.com/watch?v=oo9AsGqnisk
+2026-07-17T00:36:13.884+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Observer Pattern tutorial with real-time example'
+2026-07-17T00:36:14.596+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Observer Pattern tutorial with real-time example': https://www.youtube.com/watch?v=lHs1t2gXIZg
+2026-07-17T00:36:14.597+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Strategy Pattern in Python practical implementation'
+2026-07-17T00:36:15.107+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Strategy Pattern in Python practical implementation': https://www.youtube.com/watch?v=hVLb3-OE3pM
+2026-07-17T00:36:15.107+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : Searching YouTube for query: 'Command Pattern in action C++ game development'
+2026-07-17T00:36:15.627+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.Learn.services.YoutubeService  : YouTube video found for query 'Command Pattern in action C++ game development': https://www.youtube.com/watch?v=attURV3JWKQ
+2026-07-17T00:36:19.203+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Course 'Master Design Patterns in Software Development' saved for guest id: 53d771c3-4ff2-4847-bcb9-f47179c3fb93
+2026-07-17T00:37:24.581+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/register — email: shubham@texttolearn.com
+2026-07-17T00:37:24.584+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Registering new user with email: shubham@texttolearn.com
+2026-07-17T00:37:25.774+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User registered successfully with id: 2
+2026-07-17T00:37:25.980+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.CourseServiceImpl     : Transferred 1 course(s) from guest 53d771c3-4ff2-4847-bcb9-f47179c3fb93 to user 2
+2026-07-17T00:37:26.486+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : Transferred 1 guest course(s) from 53d771c3-4ff2-4847-bcb9-f47179c3fb93 to user 2
+2026-07-17T00:37:26.487+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : Registration successful for user id: 2
+2026-07-17T00:37:37.928+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 2
+2026-07-17T00:38:48.045+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-07-17T00:38:48.049+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-07-17T00:38:48.601+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 2 logged in successfully
+2026-07-17T00:38:49.016+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from 52812fc8-6401-4816-bfdf-8042263b104f to user 2
+2026-07-17T00:38:49.017+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-4] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 2
+2026-07-17T00:39:22.415+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-9] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 2
+2026-07-17T00:39:43.756+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-07-17T00:39:43.756+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-07-17T00:39:44.526+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 2 logged in successfully
+2026-07-17T00:39:44.526+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-1] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 2
+2026-07-17T00:44:43.070+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-07-17T00:44:43.071+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-07-17T00:44:43.734+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 2 logged in successfully
+2026-07-17T00:44:44.087+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.controllers.AuthController   : Transferred 0 guest course(s) from 9f7c2881-ccc7-4265-9e5b-737987082e4c to user 2
+2026-07-17T00:44:44.088+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-2] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 2
+2026-07-17T00:45:10.349+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-6] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 2
+2026-07-17T00:45:26.630+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-07-17T00:45:26.634+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-07-17T00:45:27.251+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 2 logged in successfully
+2026-07-17T00:45:27.251+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 2
+2026-07-17T00:45:47.331+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-5] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/logout — logging out user id: 2
+2026-07-17T00:46:00.693+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : POST /api/auth/login — email: shubham@texttolearn.com
+2026-07-17T00:46:00.693+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : Login attempt for email: shubham@texttolearn.com
+2026-07-17T00:46:01.252+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.s.impl.AuthServiceImpl       : User 2 logged in successfully
+2026-07-17T00:46:01.253+05:30  INFO 35041 --- [Text-to-Learn] [http-nio-8080-exec-8] c.e.b.T.t.L.controllers.AuthController   : Login successful for user id: 2
