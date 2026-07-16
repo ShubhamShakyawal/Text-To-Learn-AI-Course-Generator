@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.backend.Text.to.Learn.entities.CourseEntity;
 import com.example.backend.Text.to.Learn.repositories.CourseRepository;
 import com.example.backend.Text.to.Learn.repositories.GuestSessionRepository;
 import com.example.backend.Text.to.Learn.entities.GuestSessionEntity;
@@ -50,9 +51,17 @@ public class GuestCleanupService {
         log.info("Guest cleanup: removing {} expired session(s)", expired.size());
 
         for (GuestSessionEntity gs : expired) {
-            int deletedCourses = courseRepository.deleteByGuestId(gs.getId());
+            // Load the course entities first so JPA cascade rules fire when we delete.
+            // A JPQL bulk DELETE (deleteByGuestId) bypasses cascades and causes a
+            // FK constraint violation because modules still reference the course rows.
+            List<CourseEntity> courses = courseRepository.findByGuestId(gs.getId());
+            int count = courses.size();
+            if (!courses.isEmpty()) {
+                // deleteAll triggers cascade = ALL + orphanRemoval on modules → lessons
+                courseRepository.deleteAll(courses);
+            }
             guestSessionRepository.delete(gs);
-            log.info("Deleted guest session {} and {} associated course(s)", gs.getId(), deletedCourses);
+            log.info("Deleted guest session {} and {} associated course(s)", gs.getId(), count);
         }
     }
 }

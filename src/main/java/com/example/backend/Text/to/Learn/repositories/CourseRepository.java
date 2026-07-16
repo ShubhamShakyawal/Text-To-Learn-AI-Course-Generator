@@ -23,10 +23,18 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
     List<CourseEntity> findByGuestIdAndUserIsNull(String guestId);
 
     /**
-     * Deletes all courses owned by a guest session.
-     * Used by the nightly cleanup job.
-     * @return number of deleted rows
+     * Returns all courses owned by a guest session (regardless of transfer state).
+     * Used by the cleanup service to load entities before entity-level deletion
+     * so JPA cascades (modules → lessons) fire correctly.
      */
+    List<CourseEntity> findByGuestId(String guestId);
+
+    /**
+     * @deprecated Use entity-level {@code deleteAll(findByGuestId(guestId))} instead
+     *             so that JPA cascade rules delete child modules and lessons first.
+     *             This JPQL bulk delete bypasses cascades and causes FK violations.
+     */
+    @Deprecated
     @Modifying
     @Transactional
     @Query("DELETE FROM CourseEntity c WHERE c.guestId = :guestId")
